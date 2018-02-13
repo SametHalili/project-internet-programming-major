@@ -20,7 +20,7 @@
             <p>Chose a forum</p>
             <div class="card">
                 <div class="card-header">List of Forums 1</div>
-                <div class="card-body"><a href="#">Blabla 1</a></div>
+                <div class="card-body"><a href="/">Blabla 1</a></div>
             </div>
             <p></p>
             <div class="card">
