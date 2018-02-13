@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+"http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <jsp:include page="head.jsp">
     <jsp:param name="pageTitle" value="Index - Blabla Forum"></jsp:param>
@@ -19,19 +19,17 @@
             <h2>Forums</h2>
             <p>Chose a forum</p>
             <div class="card">
-                <div class="card-header">List of Forums 1</div>
-                <div class="card-body"><a href="/">Blabla 1</a></div>
-            </div>
-            <p></p>
-            <div class="card">
-                <div class="card-header">List of Forums 2</div>
-                <div class="card-body"><a href="#">Blabla 2</a></div>
+                <div class="card-header">List of Threads</div>
+                <div class="card-body"><a href="#">Thread 1</a></div>
+                <div class="card-body"><a href="#">Thread 2</a></div>
+                <div class="card-body"><a href="#">Thread 3</a></div>
+                <div class="card-body"><a href="#">Thread 4</a></div>
+                <div class="card-body"><a href="#">Thread 5</a></div>
             </div>
         </div>
+        <a href="#" class="btn btn-primary btn-lg" role="button">Create new thread</a>
         <div class="col-sm-2"></div>
     </div>
 </div>
-
-
 </body>
 </html>
