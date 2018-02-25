@@ -1,4 +1,4 @@
-package forumBlabla.db;
+package forumBlabla.domain.db;
 
 public class FactoryForumPostDb
 {

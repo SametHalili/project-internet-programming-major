@@ -1,4 +1,4 @@
-package forumBlabla.db;
+package forumBlabla.domain.db;
 import forumBlabla.domain.ForumPost;
 import java.util.Map;
 

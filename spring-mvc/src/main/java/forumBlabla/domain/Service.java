@@ -1,7 +1,7 @@
 package forumBlabla.domain;
-import forumBlabla.db.FactoryForumPostDb;
-import forumBlabla.db.ForumPostDb;
-import forumBlabla.db.ForumPostDbInMemory;
+import forumBlabla.domain.db.FactoryForumPostDb;
+import forumBlabla.domain.db.ForumPostDb;
+import forumBlabla.domain.db.ForumPostDbInMemory;
 
 public class Service
 {

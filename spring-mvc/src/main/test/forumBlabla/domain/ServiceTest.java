@@ -1,7 +1,7 @@
 package forumBlabla.domain;
 
-import forumBlabla.db.DbException;
-import forumBlabla.db.ForumPostDbInMemory;
+import forumBlabla.domain.db.DbException;
+import forumBlabla.domain.db.ForumPostDbInMemory;
 import org.junit.Before;
 import org.junit.Test;
 
