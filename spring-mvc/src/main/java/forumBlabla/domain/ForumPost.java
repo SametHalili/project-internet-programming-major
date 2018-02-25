@@ -5,38 +5,60 @@ import java.time.LocalDateTime;
 public class ForumPost
 {
     private int postId;
-    private static int instanceCounter = 0;
+
     private String msg, username;
     private LocalDateTime msgTime;
 
-    public ForumPost(String msg, String username)
+    public ForumPost(String msg, String username) //Default constructor
     {
         setMsg(msg);
         setUsername(username);
         setMsgTime(LocalDateTime.now());
-        this.postId = instanceCounter;
-        instanceCounter++;
+        this.postId = 0; //Dummy value, the sql table only needs msg, username and msgTime.
+    }                    //The postId will be incremented by itself in the sql table
+
+    public ForumPost(String msg, String username, int postId) //When working in memory
+    {
+        setMsg(msg);
+        setUsername(username);
+        setMsgTime(LocalDateTime.now());
+        setPostId(postId);
     }
 
-    private void setMsg(String msg)
+    public ForumPost(String msg, String username, LocalDateTime localDateTime, int postId) //When you need to convert the values you get from the sql table to an object
+    {
+        setMsg(msg);
+        setUsername(username);
+        setMsgTime(localDateTime);
+        setPostId(postId);
+    }
+
+    public void setMsg(String msg)
     {
         if(msg == null || msg.length() < 10 || msg.trim().length() < 10)
             throw new DomainException("ForumPost too short!");
         this.msg = msg;
     }
 
-    private void setUsername(String username)
+    public void setUsername(String username)
     {
         if(username == null || username.length() < 5 || username.trim().length() < 5)
             throw new DomainException("Username incorrect!");
         this.username = username;
     }
 
-    private void setMsgTime(LocalDateTime msgTime)
+    public void setMsgTime(LocalDateTime msgTime)
     {
-        if(msgTime == null)
+        if(msgTime == null || !(msgTime instanceof LocalDateTime))
             throw new DomainException("Something went wrong when giving the localtime!");
         this.msgTime = msgTime;
+    }
+
+    public void setPostId(int postId)
+    {
+        if(postId < 0)
+            throw new DomainException("PostId error!");
+        this.postId = postId;
     }
 
     public String getMsg()
