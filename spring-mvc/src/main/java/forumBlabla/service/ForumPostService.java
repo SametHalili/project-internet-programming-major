@@ -1,24 +1,25 @@
-package forumBlabla.domain;
-import forumBlabla.domain.db.FactoryForumPostDb;
-import forumBlabla.domain.db.ForumPostDb;
-import forumBlabla.domain.db.ForumPostDbInMemory;
+package forumBlabla.service;
+import forumBlabla.domain.ForumPost;
+import forumBlabla.domain.db.forumPost.FactoryForumPostDb;
+import forumBlabla.domain.db.forumPost.ForumPostDb;
+import forumBlabla.domain.db.forumPost.ForumPostDbInMemory;
 
-public class Service
+public class ForumPostService
 {
     private FactoryForumPostDb factoryDb = new FactoryForumPostDb();
     private ForumPostDb database;
 
-    public Service() //default
+    public ForumPostService() //default
     {
         this.database = new ForumPostDbInMemory();
     }
 
-    public Service(String dbType) //Factory pattern
+    public ForumPostService(String dbType) //Factory pattern
     {
         setTypeDb(factoryDb.getTypeDb(dbType));
     }
 
-    public Service(ForumPostDb strategy) //Strategy pattern
+    public ForumPostService(ForumPostDb strategy) //Strategy pattern
     {
         setTypeDb(strategy);
     }
@@ -36,6 +37,13 @@ public class Service
     public ForumPost getMessage(int postId)
     {
         return database.get(postId);
+    }
+
+    public boolean getMessageBool(int postId)
+    {
+        if(database.get(postId) != null)
+            return true;
+        return false;
     }
 
     public ForumPost createMessage(String message, String username)

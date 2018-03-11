@@ -1,6 +1,7 @@
-package forumBlabla.domain.db;
+package forumBlabla.domain.db.forumPost;
 
 import forumBlabla.domain.ForumPost;
+import forumBlabla.domain.db.DbException;
 
 import java.util.*;
 
@@ -14,6 +15,9 @@ public class ForumPostDbInMemory implements ForumPostDb
     {
         instanceCounter = 0;
         this.add(new ForumPost("Hallo dit is mijn eerste post!", "Temas"));
+        this.add(new ForumPost("Hallo dit is mijn tweede post!", "Temas"));
+        this.add(new ForumPost("Hallo dit is mijn derde post!", "Temas"));
+        this.add(new ForumPost("Hallo dit is mijn vierde post!", "Temas"));
     }
 
     @Override

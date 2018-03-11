@@ -1,4 +1,6 @@
-package forumBlabla.domain.db;
+package forumBlabla.domain.db.forumPost;
+
+import forumBlabla.domain.db.DbException;
 
 public class FactoryForumPostDb
 {
