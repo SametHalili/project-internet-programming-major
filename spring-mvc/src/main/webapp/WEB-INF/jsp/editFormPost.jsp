@@ -28,7 +28,8 @@
                 <form:input type="text" cssClass="form-control" id="message" path="msg" required="required"/>
             </p>
             <p><form:errors path="msg" cssClass="alert alert-warning" /></p>
-            <button id="save" type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="button" name="edit" value="Edit" class="btn btn-default">Edit</button>
+            <button type="submit" class="button" name="cancel" value="Cancel" class="btn btn-default">No</button>
         </div>
     </div>
 </form:form>

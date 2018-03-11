@@ -14,22 +14,26 @@
     <div class="row">
         <div class="col-sm-2">
         </div>
+
         <div class="col-sm-2">
+            <p>You want to delete the following post:</p>
+            <p class="form-group">
+                <label for="postId">Post ID:</label>
+                <form:input type="text" cssClass="form-control" id="postId"  path="postId" required="required" readonly="true"/>
+            </p>
             <p class="form-group">
                 <label for="username">Username:</label>
-                <form:input type="text" cssClass="form-control" id="username"  path="username" required="required"/>
+                <form:input type="text" cssClass="form-control" id="username"  path="username" required="required" readonly="true"/>
             </p>
-            <p><form:errors path="username" cssClass="alert alert-warning"/></p>
             <p class="form-group">
                 <label for="message">Message:</label>
-                <form:input type="text" cssClass="form-control" id="message" path="msg" required="required"/>
+                <form:input type="text" cssClass="form-control" id="message" path="msg" required="required" readonly="true"/>
             </p>
-            <p><form:errors path="msg" cssClass="alert alert-warning" /></p>
-            <button type="submit" class="button" name="addPost" value="AddPost" class="btn btn-default">Submit</button>
-            <button type="submit" class="button" name="cancel" value="Cancel" class="btn btn-default">Cancel</button>
-        </div>
+            <button type="submit" class="button" name="delete" value="Delete" class="btn btn-default">Yes</button>
+            <button type="submit" class="button" name="cancel" value="Cancel" class="btn btn-default">No</button>
     </div>
 </form:form>
+
 
 </body>
 </html>

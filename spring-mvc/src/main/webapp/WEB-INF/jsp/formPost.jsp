@@ -25,7 +25,8 @@
                 <form:input type="text" cssClass="form-control" id="message" path="msg" required="required"/>
             </p>
             <p><form:errors path="msg" cssClass="alert alert-warning" /></p>
-            <button id="save" type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="button" name="addPost" value="AddPost" class="btn btn-default">Submit</button>
+            <button type="submit" class="button" name="cancel" value="Cancel" class="btn btn-default">Cancel</button>
         </div>
     </div>
 </form:form>

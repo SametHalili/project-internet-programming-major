@@ -39,24 +39,41 @@ public class ThreadController
         return new ModelAndView("editFormPost","forumPost", service.getMessage(postId));
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{postId}", method = RequestMethod.GET)
+    public ModelAndView getNewForumPostForm(@PathVariable int postId)
+    {
+        return new ModelAndView("deletePost", "forumPost", service.getMessage(postId));
+    }
+
+    @RequestMapping(params = "addPost", method = RequestMethod.POST)
     public String saveNewForumPost(ForumPost forumPost, BindingResult result)
     {
         if(result.hasErrors())
-        {
-            if(service.getMessageBool(forumPost.getPostId()))
-                return "editFormPost";
             return "formPost";
-        }
-
-        if(service.getMessageBool(forumPost.getPostId()))
-        {
-            service.editMessage(forumPost.getPostId(), forumPost.getMsg());
-            return "redirect:/thread.htm";
-        }
-
         ForumPost finalPost = new ForumPost(forumPost.getMsg(), forumPost.getUsername());
         service.addNewMessage(finalPost);
+        return "redirect:/thread.htm";
+    }
+
+    @RequestMapping(params = "edit", method = RequestMethod.POST)
+    public String editForumPost(ForumPost forumPost, BindingResult result)
+    {
+        if(result.hasErrors())
+            return "editFormPost";
+        service.editMessage(forumPost.getPostId(), forumPost.getMsg());
+        return "redirect:/thread.htm";
+    }
+
+    @RequestMapping(params = "delete", method = RequestMethod.POST)
+    public String deleteForumPost(ForumPost forumPost)
+    {
+        service.deleteMessage(forumPost.getPostId());
+        return "redirect:/thread.htm";
+    }
+
+    @RequestMapping(params = "cancel", method = RequestMethod.POST)
+    public String cancelAction()
+    {
         return "redirect:/thread.htm";
     }
 }

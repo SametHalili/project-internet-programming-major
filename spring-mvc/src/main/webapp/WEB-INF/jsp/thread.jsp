@@ -24,6 +24,7 @@
                     <div class="card-body">${post.msg}</div>
                 </div>
                 <a href="<c:url value="/thread/edit/${post.postId}.htm"/>" class="btn btn-primary btn-lg" role="button">Edit</a>
+                <a href="<c:url value="/thread/delete/${post.postId}.htm"/>" class="btn btn-primary btn-lg" role="button">Delete</a>
             </c:forEach>
         </div>
         <div class="col-sm-2"></div>
