@@ -15,6 +15,9 @@
         <jstl.version>1.2</jstl.version>
         <maven.war.version>2.3</maven.war.version>
         <spring.version>5.0.3.RELEASE</spring.version>
+        <junit.version>4.12</junit.version>
+        <jpa.version>2.7.1</jpa.version>
+        <derby.version>10.14.1.0</derby.version>
     </properties>
 
     <dependencies>
@@ -37,8 +40,19 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.jpa</artifactId>
+            <version>${jpa.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>${derby.version}</version>
         </dependency>
     </dependencies>
 
