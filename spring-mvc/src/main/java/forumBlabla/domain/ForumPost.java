@@ -1,13 +1,25 @@
 package forumBlabla.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+
+@Entity
 public class ForumPost
 {
+    @Id
+    @GeneratedValue
     private int postId;
 
     private String msg, username;
     private LocalDateTime msgTime;
+
+    public ForumPost()
+    {
+    }
 
     public ForumPost(String msg, String username) //Default constructor
     {
@@ -74,6 +86,11 @@ public class ForumPost
     public LocalDateTime getMsgTime()
     {
         return msgTime;
+    }
+
+    public String getMsgTimeFormatted()
+    {
+        return msgTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public int getPostId()
