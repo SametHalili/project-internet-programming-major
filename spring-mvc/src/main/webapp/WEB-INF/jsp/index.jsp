@@ -7,10 +7,7 @@
 </jsp:include>
 
 <body>
-<div class="jumbotron text-center">
-    <h1 class="display-1">Blabla Forum</h1>
-    <h2>Welcome to the forum!</h2>
-</div>
+<jsp:include page="header.jsp"></jsp:include>
 
 <div class="container-fluid">
     <div class="row">
@@ -20,7 +17,7 @@
             <p>Chose a forum</p>
             <div class="card">
                 <div class="card-header">List of Forums 1</div>
-                <div class="card-body"><a href="/">Blabla 1</a></div>
+                <div class="card-body"><a href="/forum.htm">Blabla 1</a></div>
             </div>
             <p></p>
             <div class="card">
@@ -31,7 +28,5 @@
         <div class="col-sm-2"></div>
     </div>
 </div>
-
-
 </body>
 </html>

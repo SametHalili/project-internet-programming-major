@@ -1,26 +1,27 @@
 package forumBlabla.domain;
 
 import forumBlabla.domain.db.DbException;
-import forumBlabla.domain.db.ForumPostDbInMemory;
+import forumBlabla.domain.db.forumPost.ForumPostDbInMemory;
+import forumBlabla.service.ForumPostService;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ServiceTest
+public class ForumPostServiceTest
 {
-    private Service service = new Service();
+    private ForumPostService forumPostService = new ForumPostService();
     @Before
     public void setUp()
     {
-        service = new Service();
-        ForumPost forumPost = service.createMessage("Hello this is my message","test123456");
-        service.addNewMessage(forumPost);
+        forumPostService = new ForumPostService();
+        ForumPost forumPost = forumPostService.createMessage("Hello this is my message","test123456");
+        forumPostService.addNewMessage(forumPost);
     }
 
     public void makeANewForumPost()
     {
-        ForumPost testPost = service.createMessage("Dit is een test","test11111");
+        ForumPost testPost = forumPostService.createMessage("Dit is een test","test11111");
         assertEquals(testPost.getMsg(), "Dit is een test");
         assertEquals(testPost.getUsername(), "test11111");
     }
@@ -28,44 +29,44 @@ public class ServiceTest
     @Test
     public void makeANewForumPostAndAddItToDatabase()
     {
-        service.addNewMessage("Dit is een test","test11111");
-        int recentPostId = service.getLatestPostId();
-        assertEquals(service.getMessage(recentPostId).getMsg(),"Dit is een test");
-        assertEquals(service.getMessage(recentPostId).getUsername(),"test11111");
+        forumPostService.addNewMessage("Dit is een test","test11111");
+        int recentPostId = forumPostService.getLatestPostId();
+        assertEquals(forumPostService.getMessage(recentPostId).getMsg(),"Dit is een test");
+        assertEquals(forumPostService.getMessage(recentPostId).getUsername(),"test11111");
     }
 
     @Test
     public void editMessageOfForumPost()
     {
-        service.editMessage(1,"Dit message is gewijzigd!!!!!");
-        assertEquals(service.getMessage(1).getMsg(),"Dit message is gewijzigd!!!!!");
+        forumPostService.editMessage(1,"Dit message is gewijzigd!!!!!");
+        assertEquals(forumPostService.getMessage(1).getMsg(),"Dit message is gewijzigd!!!!!");
     }
 
     @Test
     public void deleteMessageFromDatabase()
     {
         makeANewForumPost();
-        service.deleteMessage(service.getLatestPostId());
-        assertNull(service.getMessage(service.getLatestPostId()));
+        forumPostService.deleteMessage(forumPostService.getLatestPostId());
+        assertNull(forumPostService.getMessage(forumPostService.getLatestPostId()));
     }
 
     @Test
     public void createDbInMemoryUsingStrategy()
     {
-        service = new Service(new ForumPostDbInMemory());
-        assertEquals(service.getDatabase().getType(), "MEMORY");
+        forumPostService = new ForumPostService(new ForumPostDbInMemory());
+        assertEquals(forumPostService.getDatabase().getType(), "MEMORY");
     }
 
     @Test
     public void creatingDbInMemoryUsingFactory()
     {
-        service = new Service("MEMORY");
-        assertEquals(service.getDatabase().getType(),"MEMORY");
+        forumPostService = new ForumPostService("MEMORY");
+        assertEquals(forumPostService.getDatabase().getType(),"MEMORY");
     }
 
     @Test(expected = DbException.class)
     public void creatingInvalidDb()
     {
-        service = new Service("123456");
+        forumPostService = new ForumPostService("123456");
     }
 }
