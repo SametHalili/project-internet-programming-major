@@ -8,7 +8,7 @@ import java.util.*;
 public class ForumPostDbInMemory implements ForumPostDb
 {
 
-    Map<Integer, ForumPost> forumPostMap = new LinkedHashMap<Integer, ForumPost>();
+    Map<Integer, ForumPost> forumPostMap = new LinkedHashMap<>();
     private static int instanceCounter = 0; //ONLY NEEDED WHEN WORKING IN MEMORY
 
     public ForumPostDbInMemory()

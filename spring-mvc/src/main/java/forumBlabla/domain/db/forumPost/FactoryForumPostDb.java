@@ -12,8 +12,8 @@ public class FactoryForumPostDb
         {
             case "MEMORY":
                 return new ForumPostDbInMemory();
-//            case "SQL": /* not implemented yet */
-//                return new ForumPostDbSql();
+            case "JPA":
+                return new ForumPostDbJpa();
             default:
                 throw new DbException("Wrong dbType!");
         }
