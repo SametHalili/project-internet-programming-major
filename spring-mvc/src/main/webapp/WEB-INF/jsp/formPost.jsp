@@ -19,12 +19,12 @@
         <div class="col-sm-2">
             <p class="form-group">
                 <label for="username">Username:</label>
-                <form:input type="text" cssClass="form-control" id="username"  path="username" required="required"/>
+                <form:input type="text" cssClass="form-control" id="username" path="username"/>
             </p>
             <p><form:errors path="username" cssClass="alert alert-warning"/></p>
             <p class="form-group">
                 <label for="message">Message:</label>
-                <form:input type="text" cssClass="form-control" id="message" path="msg" required="required"/>
+                <form:input type="text" cssClass="form-control" id="message" path="msg"/>
             </p>
             <p><form:errors path="msg" cssClass="alert alert-warning" /></p>
             <button type="submit" class="button" name="addPost" value="AddPost" class="btn btn-default">Submit</button>

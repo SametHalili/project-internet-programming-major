@@ -74,6 +74,6 @@ public class ThreadController
     @RequestMapping(params = "cancel", method = RequestMethod.POST)
     public String cancelAction()
     {
-        return "redirect:/thread.htm";
+        return "redirect:/index.htm";
     }
 }

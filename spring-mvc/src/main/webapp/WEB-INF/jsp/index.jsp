@@ -25,7 +25,8 @@
                 <div class="card-body"><a href="#">Blabla 2</a></div>
             </div>
         </div>
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+        </div>
     </div>
 </div>
 </body>

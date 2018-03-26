@@ -14,22 +14,30 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <c:forEach items="${thread}" var="post">
-                <div class="card">
-                    <div class="card-header">
-                        <p>${post.username}</p>
-                        <p>Time posted: ${post.msgTimeFormatted}</p>
-                        <p>Post id: ${post.postId}</p>
-                    </div>
-                    <div class="card-body">${post.msg}</div>
-                </div>
-                <a href="<c:url value="/thread/edit/${post.postId}.htm"/>" class="btn btn-primary btn-lg" role="button">Edit</a>
-                <a href="<c:url value="/thread/delete/${post.postId}.htm"/>" class="btn btn-primary btn-lg" role="button">Delete</a>
-            </c:forEach>
+            <c:choose>
+                <c:when test="${empty thread}">
+                    <p>Thread empty</p>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${thread}" var="post">
+                        <div class="card">
+                            <div class="card-header">
+                                <p>${post.username}</p>
+                                <p>Time posted: ${post.msgTimeFormatted}</p>
+                                <p>Post id: ${post.postId}</p>
+                            </div>
+                            <div class="card-body">${post.msg}</div>
+                        </div>
+                        <a href="<c:url value="/thread/edit/${post.postId}.htm"/>" class="btn btn-primary btn-lg" role="button">Edit</a>
+                        <a href="<c:url value="/thread/delete/${post.postId}.htm"/>" class="btn btn-primary btn-lg" role="button">Delete</a>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </div>
         <div class="col-sm-2"></div>
+        <a href="<c:url value="/thread/new.htm"/>" class="btn btn-primary btn-lg" role="button">Post a message</a>
     </div>
-    <a href="<c:url value="/thread/new.htm"/>" class="btn btn-primary btn-lg" role="button">Post a message</a>
+
 </div>
 </body>
 </html>

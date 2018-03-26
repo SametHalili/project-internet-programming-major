@@ -19,15 +19,15 @@
         <div class="col-sm-2">
             <p class="form-group">
                 <label for="postId">Post ID:</label>
-                <form:input type="text" cssClass="form-control" id="postId"  path="postId" required="required" readonly="true"/>
+                <form:input type="text" cssClass="form-control" id="postId"  path="postId" readonly="true"/>
             </p>
             <p class="form-group">
                 <label for="username">Username:</label>
-                <form:input type="text" cssClass="form-control" id="username"  path="username" required="required" readonly="true"/>
+                <form:input type="text" cssClass="form-control" id="username"  path="username" readonly="true"/>
             </p>
             <p class="form-group">
                 <label for="message">Message:</label>
-                <form:input type="text" cssClass="form-control" id="message" path="msg" required="required"/>
+                <form:input type="text" cssClass="form-control" id="message" path="msg"/>
             </p>
             <p><form:errors path="msg" cssClass="alert alert-warning" /></p>
             <button type="submit" class="button" name="edit" value="Edit" class="btn btn-default">Edit</button>
