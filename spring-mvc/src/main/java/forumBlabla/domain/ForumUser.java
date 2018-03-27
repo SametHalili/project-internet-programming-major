@@ -5,28 +5,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class User
+public class ForumUser
 {
     private int userId;
     @Id
     private String username;
     private String password;
 
-    public User()
+    public ForumUser()
     {
         this.userId = 0;
         this.username = "";
         this.password = "";
     }
 
-    public User(String username, String password)
+    public ForumUser(String username, String password)
     {
         setUsername(username);
         setPassword(password);
         this.userId = 0;
     }
 
-    public User(String username, String password, int userId)
+    public ForumUser(String username, String password, int userId)
     {
         setUsername(username);
         setPassword(password);

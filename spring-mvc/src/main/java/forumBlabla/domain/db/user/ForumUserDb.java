@@ -4,7 +4,7 @@ import forumBlabla.domain.User;
 
 import java.util.Map;
 
-public interface UserDb
+public interface ForumUserDb
 {
     User get(String username);
     Map<String, User> getAll();

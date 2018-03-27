@@ -1,34 +1,35 @@
 package forumBlabla.service;
 
-import forumBlabla.domain.User;
-import forumBlabla.domain.db.user.UserDb;
-import forumBlabla.domain.db.user.UserDbInMemory;
+import forumBlabla.domain.ForumUser;
+import forumBlabla.domain.db.user.ForumUserDb;
+import forumBlabla.domain.db.user.ForumUserDbInMemory;
 
-public class UserService
+
+public class ForumUserService
 {
-    private UserDb userDb;
+    private ForumUserDb userDb;
 
-    public UserService()
+    public ForumUserService()
     {
-        this.userDb = new UserDbInMemory();
+        this.userDb = new ForumUserDbInMemory();
     }
 
-    public UserService(UserDb strategy)
+    public ForumUserService(ForumUserDb strategy)
     {
         setTypeDb(strategy);
     }
 
-    public void setTypeDb(UserDb strategy)
+    public void setTypeDb(ForumUserDb strategy)
     {
         this.userDb = strategy;
     }
 
-    public UserDb getDatabase()
+    public ForumUserDb getDatabase()
     {
         return userDb;
     }
 
-    public User getUser(String username)
+    public ForumUser getUser(String username)
     {
         return userDb.get(username);
     }
@@ -40,14 +41,14 @@ public class UserService
         return false;
     }
 
-    public void addUser(User user)
+    public void addUser(ForumUser user)
     {
         userDb.add(user);
     }
 
     public void addUser(String username, String password)
     {
-        userDb.add(new User(username, password));
+        userDb.add(new ForumUser(username, password));
     }
 
     public void deleteUser(String username)

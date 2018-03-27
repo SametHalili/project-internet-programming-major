@@ -1,11 +1,10 @@
 package forumBlabla.web.controller;
 
-import forumBlabla.domain.User;
-import forumBlabla.service.UserService;
+import forumBlabla.domain.ForumUser;
+import forumBlabla.service.ForumUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,26 +13,26 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/register")
 public class RegisterController
 {
-    private final UserService userService;
+    private final ForumUserService forumUserService;
 
-    public RegisterController(@Autowired UserService userService)
+    public RegisterController(@Autowired ForumUserService forumUserService)
     {
-        this.userService = userService;
+        this.forumUserService = forumUserService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getRegisterForm()
     {
-        return new ModelAndView("/register", "newUser", new User());
+        return new ModelAndView("/register", "newUser", new ForumUser());
     }
 
     @RequestMapping(params = "doRegister", method = RequestMethod.POST)
-    public String doRegister(User user, BindingResult result)
+    public String doRegister(ForumUser user, BindingResult result)
     {
         if(result.hasErrors())
             return "login";
 
-        userService.addUser(user);
+        forumUserService.addUser(user);
         return "redirect:/login.htm";
     }
 

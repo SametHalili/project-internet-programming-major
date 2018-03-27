@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.*;
 
-public class UserDbJpa implements UserDb
+public class ForumUserDbJpa implements ForumUserDb
 {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
 

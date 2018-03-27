@@ -1,10 +1,9 @@
 package forumBlabla.web.config;
 
-import forumBlabla.domain.db.forumPost.ForumPostDbJpa;
 import forumBlabla.domain.db.user.UserDbInMemory;
 import forumBlabla.domain.db.user.UserDbJpa;
 import forumBlabla.service.ForumPostService;
-import forumBlabla.service.UserService;
+import forumBlabla.service.ForumUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,5 +17,5 @@ public class ApplicationConfig
     }
 
     @Bean
-    public UserService userService() { return new UserService(new UserDbInMemory()); }
+    public ForumUserService userService() { return new ForumUserService(new UserDbInMemory()); }
 }

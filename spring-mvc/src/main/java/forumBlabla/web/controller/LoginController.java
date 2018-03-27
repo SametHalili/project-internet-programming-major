@@ -1,7 +1,7 @@
 package forumBlabla.web.controller;
 
-import forumBlabla.domain.User;
-import forumBlabla.service.UserService;
+import forumBlabla.domain.ForumUser;
+import forumBlabla.service.ForumUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,31 +16,31 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/login")
 public class LoginController
 {
-    private final UserService userService;
+    private final ForumUserService forumUserService;
 
-    public LoginController(@Autowired UserService userService)
+    public LoginController(@Autowired ForumUserService forumUserService)
     {
-        this.userService = userService;
+        this.forumUserService = forumUserService;
     }
 
     @ModelAttribute("user")
-    public User setUpUserForm()
+    public ForumUser setUpUserForm()
     {
-        return new User();
+        return new ForumUser();
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getLoginForm(@ModelAttribute("user") User user)
+    public ModelAndView getLoginForm(@ModelAttribute("user") ForumUser user)
     {
         return new ModelAndView("/login", "user", user);
     }
 
     @RequestMapping(params = "doLogin", method = RequestMethod.POST)
-    public String doLogin(@ModelAttribute("user") User user, BindingResult result)
+    public String doLogin(@ModelAttribute("user") ForumUser user, BindingResult result)
     {
         if(result.hasErrors() ||
-                (!userService.getUserBool(user.getUsername())
-                ||!userService.getUser(user.getUsername()).getPassword()
+                (!forumUserService.getUserBool(user.getUsername())
+                ||!forumUserService.getUser(user.getUsername()).getPassword()
                                                           .equals(user.getPassword())))
         {
             user.setUsername("");
@@ -52,7 +52,7 @@ public class LoginController
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String doLogout(@ModelAttribute("user") User user)
+    public String doLogout(@ModelAttribute("user") ForumUser user)
     {
         user.setUserId(0);
         user.setUsername("");

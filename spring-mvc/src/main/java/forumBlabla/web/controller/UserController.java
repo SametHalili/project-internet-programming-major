@@ -1,10 +1,9 @@
 package forumBlabla.web.controller;
 
-import forumBlabla.domain.User;
-import forumBlabla.service.UserService;
+import forumBlabla.domain.ForumUser;
+import forumBlabla.service.ForumUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -14,16 +13,16 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/user")
 public class UserController
 {
-    private final UserService userService;
+    private final ForumUserService forumUserService;
 
-    public UserController(@Autowired UserService userService)
+    public UserController(@Autowired ForumUserService forumUserService)
     {
-        this.userService = userService;
+        this.forumUserService = forumUserService;
     }
     //TODO: public profiles
 
     @RequestMapping(value="/profile",method = RequestMethod.GET)
-    public ModelAndView getPrivateProfile(@SessionAttribute("user") User user)
+    public ModelAndView getPrivateProfile(@SessionAttribute("user") ForumUser user)
     {
         if(user.getUsername().isEmpty() )
             return new ModelAndView("/index");

@@ -7,12 +7,12 @@ import forumBlabla.domain.db.DbException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class UserDbInMemory implements UserDb
+public class ForumUserDbInMemory implements ForumUserDb
 {
     Map<String, User> userMap = new LinkedHashMap<>();
     private static int instanceCounter = 0; //ONLY NEEDED WHEN WORKING IN MEMORY
 
-    public UserDbInMemory()
+    public ForumUserDbInMemory()
     {
         instanceCounter = 0;
         this.add(new User("admin", "admin"));

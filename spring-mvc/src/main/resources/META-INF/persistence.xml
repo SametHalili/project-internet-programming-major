@@ -6,7 +6,7 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
         <class>forumBlabla.domain.ForumPost</class>
-        <class>forumBlabla.domain.User</class>
+        <class>forumBlabla.domain.ForumUser</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/forum;create=true"/>
