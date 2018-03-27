@@ -1,14 +1,14 @@
 package forumBlabla.domain.db.user;
 
-import forumBlabla.domain.User;
+import forumBlabla.domain.ForumUser;
 
 import java.util.Map;
 
 public interface ForumUserDb
 {
-    User get(String username);
-    Map<String, User> getAll();
-    void add(User user);
+    ForumUser get(String username);
+    Map<String, ForumUser> getAll();
+    void add(ForumUser user);
     void edit(String username, String newPassword);
     void delete(String username);
     String getType();

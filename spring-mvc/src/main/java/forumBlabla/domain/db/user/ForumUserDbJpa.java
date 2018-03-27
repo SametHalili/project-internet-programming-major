@@ -1,6 +1,6 @@
 package forumBlabla.domain.db.user;
 
-import forumBlabla.domain.User;
+import forumBlabla.domain.ForumUser;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,26 +12,26 @@ public class ForumUserDbJpa implements ForumUserDb
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
 
     @Override
-    public User get(String username)
+    public ForumUser get(String username)
     {
         EntityManager em = entityManagerFactory.createEntityManager();
 
-        User user = em.find(User.class, username);
+        ForumUser user = em.find(ForumUser.class, username);
 
         em.close();
         return user;
     }
 
     @Override
-    public Map<String, User> getAll()
+    public Map<String, ForumUser> getAll()
     {
         EntityManager em = entityManagerFactory.createEntityManager();
 
-        Map<String, User> forumPostMap = new LinkedHashMap<>();
-        String query = "SELECT user FROM User user";
-        List<User> resultList = em.createQuery(query, User.class).getResultList();
+        Map<String, ForumUser> forumPostMap = new LinkedHashMap<>();
+        String query = "SELECT user FROM ForumUser user";
+        List<ForumUser> resultList = em.createQuery(query, ForumUser.class).getResultList();
 
-        for (User user: resultList)
+        for (ForumUser user: resultList)
         {
             forumPostMap.put(user.getUsername(), user);
         }
@@ -41,7 +41,7 @@ public class ForumUserDbJpa implements ForumUserDb
     }
 
     @Override
-    public void add(User user)
+    public void add(ForumUser user)
     {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -54,7 +54,7 @@ public class ForumUserDbJpa implements ForumUserDb
     public void edit(String username, String newPassword)
     {
         EntityManager em = entityManagerFactory.createEntityManager();
-        User user = em.find(User.class, username);
+        ForumUser user = em.find(ForumUser.class, username);
 
         em.getTransaction().begin();
         user.setUsername(username);
@@ -68,7 +68,7 @@ public class ForumUserDbJpa implements ForumUserDb
     public void delete(String username)
     {
         EntityManager em = entityManagerFactory.createEntityManager();
-        User user = em.find(User.class, username);
+        ForumUser user = em.find(ForumUser.class, username);
 
         em.getTransaction().begin();
         em.remove(user);

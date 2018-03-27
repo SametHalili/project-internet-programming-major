@@ -1,7 +1,6 @@
 package forumBlabla.domain.db.user;
 
-import forumBlabla.domain.ForumPost;
-import forumBlabla.domain.User;
+import forumBlabla.domain.ForumUser;
 import forumBlabla.domain.db.DbException;
 
 import java.util.LinkedHashMap;
@@ -9,31 +8,31 @@ import java.util.Map;
 
 public class ForumUserDbInMemory implements ForumUserDb
 {
-    Map<String, User> userMap = new LinkedHashMap<>();
+    Map<String, ForumUser> userMap = new LinkedHashMap<>();
     private static int instanceCounter = 0; //ONLY NEEDED WHEN WORKING IN MEMORY
 
     public ForumUserDbInMemory()
     {
         instanceCounter = 0;
-        this.add(new User("admin", "admin"));
-        this.add(new User("admin2", "admin2"));
+        this.add(new ForumUser("admin", "admin"));
+        this.add(new ForumUser("admin2", "admin2"));
     }
 
     @Override
-    public User get(String username) {
+    public ForumUser get(String username) {
         return userMap.get(username);
     }
 
     @Override
-    public Map<String, User> getAll() {
+    public Map<String, ForumUser> getAll() {
         return userMap;
     }
 
     @Override
-    public void add(User user)
+    public void add(ForumUser user)
     {
         if(user == null)
-            throw new DbException("User invalid");
+            throw new DbException("ForumUser invalid");
         instanceCounter++;
         user.setUserId(instanceCounter);
         userMap.put(user.getUsername(), user);
@@ -45,9 +44,9 @@ public class ForumUserDbInMemory implements ForumUserDb
         if(newPassword == null || newPassword.length() < 6)
             throw new DbException("Password invalid");
         if(!userMap.containsKey(username))
-            throw new DbException("User not found");
+            throw new DbException("ForumUser not found");
         int userId = userMap.get(username).getUserId();
-        User newUser = new User(username, newPassword, userId);
+        ForumUser newUser = new ForumUser(username, newPassword, userId);
         userMap.replace(username, newUser);
     }
 
