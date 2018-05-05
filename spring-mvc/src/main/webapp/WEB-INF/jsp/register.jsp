@@ -16,6 +16,8 @@
         <div class="col-sm-2">
         </div>
         <div class="col-sm-2">
+            <h1>Register now</h1>
+            <p>Fill in the form below to make an account</p>
             <p class="form-group">
                 <label for="username">Username:</label>
                 <form:input type="text" cssClass="form-control" id="username" path="username"/>

@@ -27,6 +27,7 @@
                 <div class="col-sm-2">
                 </div>
                 <div class="col-sm-2">
+                    <h1>Log in:</h1>
                     <p class="form-group">
                         <label for="username">Username:</label>
                         <form:input type="text" cssClass="form-control" id="username" path="username"/>
@@ -37,7 +38,7 @@
                         <form:input type="text" cssClass="form-control" id="password" path="password"/>
                     </p>
                     <p><form:errors path="password" cssClass="alert alert-warning"/></p>
-                    <button type="submit" class="button" name="doLogin" value="DoLogin" class="btn btn-default">Log in</button>
+                    <button type="submit" class="button" name="doLogin" value="DoLogin" class="btn btn-default"><spring:message code="label.login"/></button>
                     <button type="submit" class="button" name="cancel" value="Cancel" class="btn btn-default">Cancel</button>
                 </div>
             </div>

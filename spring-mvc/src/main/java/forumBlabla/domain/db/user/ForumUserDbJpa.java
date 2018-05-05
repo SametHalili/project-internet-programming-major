@@ -1,6 +1,7 @@
 package forumBlabla.domain.db.user;
 
 import forumBlabla.domain.ForumUser;
+import forumBlabla.domain.db.DbException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

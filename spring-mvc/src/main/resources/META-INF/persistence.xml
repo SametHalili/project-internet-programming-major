@@ -9,7 +9,7 @@
         <class>forumBlabla.domain.ForumUser</class>
 
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/forum;create=true"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://193.191.177.8:10116/forum;create=true"/>
             <property name="javax.persistence.jdbc.user" value="app"/>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="javax.persistence.jdbc.password" value="app"/>

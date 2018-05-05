@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(value="/thread")
 public class ThreadController
@@ -22,7 +24,7 @@ public class ThreadController
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getForums()
+    public ModelAndView getForumPosts()
     {
         return new ModelAndView("/thread", "thread", service.getDatabase().getAll().values());
     }
@@ -46,7 +48,7 @@ public class ThreadController
     }
 
     @RequestMapping(params = "addPost", method = RequestMethod.POST)
-    public String saveNewForumPost(ForumPost forumPost, BindingResult result)
+    public String saveNewForumPost(@Valid ForumPost forumPost, BindingResult result)
     {
         if(result.hasErrors())
             return "formPost";
@@ -56,7 +58,7 @@ public class ThreadController
     }
 
     @RequestMapping(params = "edit", method = RequestMethod.POST)
-    public String editForumPost(ForumPost forumPost, BindingResult result)
+    public String editForumPost(@Valid ForumPost forumPost, BindingResult result)
     {
         if(result.hasErrors())
             return "editFormPost";
@@ -65,7 +67,7 @@ public class ThreadController
     }
 
     @RequestMapping(params = "delete", method = RequestMethod.POST)
-    public String deleteForumPost(ForumPost forumPost)
+    public String deleteForumPost(@Valid ForumPost forumPost)
     {
         service.deleteMessage(forumPost.getPostId());
         return "redirect:/thread.htm";

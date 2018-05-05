@@ -1,5 +1,6 @@
 package forumBlabla.web.config;
 
+import forumBlabla.web.config.security.WebSecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
@@ -7,7 +8,8 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     @java.lang.Override
     protected java.lang.Class<?>[] getRootConfigClasses()
     {
-        return new Class[]{ApplicationConfig.class};
+        return new Class[]{ApplicationConfig.class,
+                           WebSecurityConfig.class};
     }
 
     @java.lang.Override
@@ -19,6 +21,6 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     @java.lang.Override
     protected java.lang.String[] getServletMappings()
     {
-        return new String[]{"*.htm"};
+        return new String[]{"/"};
     }
 }

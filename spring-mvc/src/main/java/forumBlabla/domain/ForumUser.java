@@ -7,6 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class ForumUser
 {
+    @GeneratedValue
     private int userId;
     @Id
     private String username;
