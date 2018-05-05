@@ -4,6 +4,9 @@ import forumBlabla.domain.db.forumPost.FactoryForumPostDb;
 import forumBlabla.domain.db.forumPost.ForumPostDb;
 import forumBlabla.domain.db.forumPost.ForumPostDbInMemory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ForumPostService
 {
     private FactoryForumPostDb factoryDb = new FactoryForumPostDb();
@@ -32,6 +35,11 @@ public class ForumPostService
     public ForumPostDb getDatabase()
     {
         return database;
+    }
+
+    public List<ForumPost> getForumPosts()
+    {
+        return new ArrayList<>(this.getDatabase().getAll().values());
     }
 
     public ForumPost getMessage(int postId)

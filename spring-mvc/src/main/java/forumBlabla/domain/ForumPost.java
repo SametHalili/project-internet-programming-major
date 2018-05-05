@@ -3,6 +3,9 @@ package forumBlabla.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,7 +17,13 @@ public class ForumPost
     @GeneratedValue
     private int postId;
 
-    private String msg, username;
+    @NotNull(message = "{error.no.message}")
+    @Size(min = 8, message = "{invalid.no.message}")
+    private String msg;
+
+    @NotNull(message="{error.no.username}")
+    @Size(min = 5, message="{invalid.no.username}")
+    private String username;
     private LocalDateTime msgTime;
 
     public ForumPost()
@@ -47,15 +56,11 @@ public class ForumPost
 
     public void setMsg(String msg)
     {
-        if(msg == null || msg.length() < 10 || msg.trim().length() < 10)
-            throw new DomainException("ForumPost too short!");
         this.msg = msg;
     }
 
     public void setUsername(String username)
     {
-        if(username == null || username.length() < 5 || username.trim().length() < 5)
-            throw new DomainException("Username incorrect!");
         this.username = username;
     }
 

@@ -29,9 +29,8 @@ public class RegisterController
     @RequestMapping(params = "doRegister", method = RequestMethod.POST)
     public String doRegister(ForumUser user, BindingResult result)
     {
-        if(result.hasErrors())
+        if(result.hasErrors() ||forumUserService.getUserBool(user.getUsername()))
             return "login";
-
         forumUserService.addUser(user);
         return "redirect:/login.htm";
     }
