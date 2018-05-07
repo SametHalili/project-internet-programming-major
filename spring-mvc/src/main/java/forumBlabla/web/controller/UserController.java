@@ -22,10 +22,8 @@ public class UserController
     //TODO: public profiles
 
     @RequestMapping(value="/profile",method = RequestMethod.GET)
-    public ModelAndView getPrivateProfile(@SessionAttribute("user") ForumUser user)
+    public ModelAndView getPrivateProfile()
     {
-        if(user.getUsername().isEmpty() )
-            return new ModelAndView("/index");
-        return new ModelAndView("userProfile", "user", user);
+        return new ModelAndView("userProfile");
     }
 }

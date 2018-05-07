@@ -8,8 +8,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @EnableWebSecurity
 @Configuration
@@ -22,26 +25,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.forumUserService = forumUserService;
     }
 
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(new CustomUserdetailsService(forumUserService));
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/index.htm").permitAll()
-                .antMatchers("/css/**", "/images/**").permitAll()
+                .antMatchers("/", "index.htm").permitAll()
+                .antMatchers("/forum.htm").permitAll()
+                .antMatchers("/thread.htm").permitAll()
+                .antMatchers("/user/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("/resources/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .and()
                 .httpBasic();
     }
-    @Bean(name="passwordEncoder")
-    public PasswordEncoder passwordencoder()
-    {
-        return new BCryptPasswordEncoder();
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withDefaultPasswordEncoder().username("admin").password("t").roles("ADMIN").build());
+        return manager;
     }
 }
