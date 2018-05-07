@@ -8,7 +8,7 @@
 
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<h1>Profile: <strong>${user.username}</strong></h1>
+<h1>Profile: <strong>Name user</strong></h1>
 <p>This is your profile! Only you can access this page at the moment.</p>
 <p>This is WIP.</p>
 <a href="/index.htm">Go back</a>

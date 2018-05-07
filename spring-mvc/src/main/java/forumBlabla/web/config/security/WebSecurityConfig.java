@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "index.htm").permitAll()
                 .antMatchers("/forum.htm").permitAll()
                 .antMatchers("/thread.htm").permitAll()
+                .antMatchers("/rest/**").permitAll()
                 .antMatchers("/user/**").hasAnyRole("USER","ADMIN")
                 .antMatchers("/resources/**").permitAll()
                 .anyRequest().authenticated()
@@ -38,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .and()
                 .httpBasic();
+        http.csrf().disable();
     }
 
     @Bean
