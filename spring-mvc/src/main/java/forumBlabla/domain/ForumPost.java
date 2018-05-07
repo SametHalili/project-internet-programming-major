@@ -1,10 +1,14 @@
 package forumBlabla.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +28,7 @@ public class ForumPost
     @NotNull(message="{error.no.username}")
     @Size(min = 5, message="{invalid.no.username}")
     private String username;
+    @JsonFormat(pattern = "dd-MM-yyyy KK:mm a")
     private LocalDateTime msgTime;
 
     public ForumPost()
@@ -66,9 +71,14 @@ public class ForumPost
 
     public void setMsgTime(LocalDateTime msgTime)
     {
-        if(msgTime == null || !(msgTime instanceof LocalDateTime))
+        if(!(msgTime instanceof LocalDateTime))
             throw new DomainException("Something went wrong when giving the localtime!");
-        this.msgTime = msgTime;
+
+        if(msgTime == null)
+            this.msgTime = LocalDateTime.now();
+        else
+            this.msgTime = msgTime;
+
     }
 
     public void setPostId(int postId)
@@ -93,6 +103,7 @@ public class ForumPost
         return msgTime;
     }
 
+    @JsonIgnore
     public String getMsgTimeFormatted()
     {
         return msgTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

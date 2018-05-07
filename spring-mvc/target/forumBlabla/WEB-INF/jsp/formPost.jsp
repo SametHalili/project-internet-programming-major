@@ -16,19 +16,19 @@
     <div class="row">
         <div class="col-sm-2">
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <p class="form-group">
-                <label for="username">Username:</label>
+                <label for="username"><spring:message code="label.username"/>:</label>
                 <form:input type="text" cssClass="form-control" id="username" path="username"/>
             </p>
             <p><form:errors path="username" cssClass="alert alert-warning"/></p>
             <p class="form-group">
-                <label for="message">Message:</label>
+                <label for="message"><spring:message code="label.message"/>:</label>
                 <form:input type="text" cssClass="form-control" id="message" path="msg"/>
             </p>
             <p><form:errors path="msg" cssClass="alert alert-warning" /></p>
-            <button type="submit" class="button" name="addPost" value="AddPost" class="btn btn-default">Submit</button>
-            <button type="submit" class="button" name="cancel" value="Cancel" class="btn btn-default">Cancel</button>
+            <button type="submit" class="button" name="addPost" value="AddPost" class="btn btn-default"><spring:message code="label.submit"/></button>
+            <button type="submit" class="button" name="cancel" value="Cancel" class="btn btn-default"><spring:message code="label.cancel"/></button>
         </div>
     </div>
 </form:form>

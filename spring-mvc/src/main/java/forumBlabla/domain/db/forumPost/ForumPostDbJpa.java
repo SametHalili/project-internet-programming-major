@@ -43,9 +43,10 @@ public class ForumPostDbJpa implements ForumPostDb //TODO: jpa implementation
     @Override
     public void add(ForumPost forumPost)
     {
+        ForumPost newPost = new ForumPost(forumPost.getMsg(),forumPost.getUsername());
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        em.persist(forumPost);
+        em.persist(newPost);
         em.getTransaction().commit();
         em.close();
     }
