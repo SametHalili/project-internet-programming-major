@@ -1,46 +1,86 @@
 package forumBlabla.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
+@Entity
 public class Thread
 {
+    @Id
+    @GeneratedValue
+    private int threadId;
+
+    @NotNull
+    private int forumPostedId;
+
+    @NotNull(message="{error.no.threadName}")
+    @Size(min = 10, message="{invalid.no.threadName}")
     private String threadName;
-    private List<Integer> postIdList = new ArrayList<>();
-    private int originalPosterId, threadId;
 
-    public Thread(String threadName, int originalPosterId)
-    {
-        setThreadName(threadName);
-        setOriginalPosterId(originalPosterId);
-        postIdList.add(originalPosterId);
-        threadId = 0;   //Dummy value, the sql table only needs msg, username and msgTime.
-    }                   //The postId will be incremented by itself in the sql table
+    @NotNull(message = "{error.no.message}")
+    @Size(min = 8, message = "{invalid.no.message}")
+    private String msgOP;
 
-    public Thread(String threadName, int originaPosterId, int threadId)
+    @NotNull(message="{error.no.username}")
+    @Size(min = 5, message="{invalid.no.username}")
+    private String usernameOP;
+
+    @JsonFormat(pattern = "dd-MM-yyyy KK:mm a")
+    private LocalDateTime threadCreated;
+
+    @JsonIgnore
+    @OneToMany
+    private List<ForumPost> forumPostList = new ArrayList<>();
+
+
+    public Thread(String threadName, String usernameOP, String msgOP, int forumPostedId)
     {
+        setForumPostedId(forumPostedId);
         setThreadName(threadName);
-        setOriginalPosterId(originaPosterId);
+        setUsernameOP(usernameOP);
+        setMsgOP(msgOP);
+        setThreadCreated(LocalDateTime.now());
+        threadId = 0;   //Dummy value, the sql table only needs msgOP, usernameOP and threadCreatedTime.
+    }                   //The threadId will be incremented by itself in the sql table
+
+    public Thread(String threadName, String usernameOP, String msgOP, int forumPostedId, int threadId)
+    {
+        setForumPostedId(forumPostedId);
+        setThreadName(threadName);
         setThreadId(threadId);
+        setUsernameOP(usernameOP);
+        setMsgOP(msgOP);
+        setThreadCreated(LocalDateTime.now());
+    }
+
+    public Thread()
+    {
+
+    }
+
+    public void addNewPostList(ForumPost newPost)
+    {
+        forumPostList.add(newPost);
     }
 
     public void setThreadName(String threadName)
     {
-        if(threadName == null || threadName.trim().length() < 10)
-            throw new DomainException("Incorrect thread name!");
         this.threadName = threadName;
-    }
-
-    public void setOriginalPosterId(int originalPosterId)
-    {
-        if(originalPosterId <= 0)
-            throw new DomainException("Something went wrong when assigning the id");
-        this.originalPosterId = originalPosterId;
     }
 
     public void setThreadId(int threadId)
     {
-        if(threadId <= 0)
+        if (threadId <= 0)
             throw new DomainException("Something went wrong when assigning the id");
         this.threadId = threadId;
     }
@@ -50,13 +90,96 @@ public class Thread
         return threadName;
     }
 
-    public int getOriginalPosterId()
-    {
-        return originalPosterId;
-    }
-
     public int getThreadId()
     {
         return threadId;
+    }
+
+    public List<ForumPost> getForumPostList()
+    {
+        return forumPostList;
+    }
+
+    public void setForumPostList(List<ForumPost> forumPostList)
+    {
+        this.forumPostList = forumPostList;
+    }
+
+    public String getMsgOP()
+    {
+        return msgOP;
+    }
+
+    public void setMsgOP(String msgOP)
+    {
+        this.msgOP = msgOP;
+    }
+
+    public String getUsernameOP()
+    {
+        return usernameOP;
+    }
+
+    public void setUsernameOP(String usernameOP)
+    {
+        this.usernameOP = usernameOP;
+    }
+
+    public LocalDateTime getThreadCreated()
+    {
+        return threadCreated;
+    }
+
+    public void setThreadCreated(LocalDateTime threadCreated)
+    {
+        if(!(threadCreated instanceof LocalDateTime))
+            throw new DomainException("Something went wrong when giving the localtime!");
+
+        if(threadCreated == null)
+            this.threadCreated = LocalDateTime.now();
+        else
+            this.threadCreated = threadCreated;
+    }
+
+    @JsonIgnore
+    public String getThreadCreatedFormatted()
+    {
+        return threadCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
+    public void deleteForumPostList(ForumPost forumPost) // bad name, actually just deletes one forumpost from list
+    {
+        for(int i = 0; i < forumPostList.size(); i++)
+        {
+            if(forumPostList.get(i).getPostId() == forumPost.getPostId())
+            {
+                forumPostList.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void editForumPostList(ForumPost forumPost) // bad name, actually just edits one forumpost from list
+    {
+        for (ForumPost post: forumPostList)
+        {
+            if(post.getPostId() == forumPost.getPostId())
+            {
+                post.setMsg(forumPost.getMsg());
+                break;
+            }
+        }
+    }
+
+    public int getForumPostedId()
+    {
+        return forumPostedId;
+    }
+
+    public void setForumPostedId(int forumPostedId)
+    {
+        if(forumPostedId < 0)
+            throw new DomainException("Something went wrong when setting the forum posted id!");
+        this.forumPostedId = forumPostedId;
     }
 }

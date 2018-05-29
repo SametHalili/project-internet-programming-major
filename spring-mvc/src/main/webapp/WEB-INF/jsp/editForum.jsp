@@ -17,36 +17,28 @@
     <div class="row">
         <div class="card col-sm-6 offset-sm-3">
             <div class="card-body">
-                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum/${editedPost.threadPostedId}/thread"
-                           modelAttribute="editedPost">
+                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum"
+                           modelAttribute="editedForum">
                     <div>
                         <h1><msg:message key="label.editFollowing"/></h1>
                         <p class="form-group">
-                            <label for="postId">Post ID:</label>
-                            <form:input type="text" cssClass="form-control" id="postId" path="postId" readonly="true"/>
-                        </p>
-                        <p class="form-group">
-                            <label for="postId">Thread ID:</label>
-                            <form:input type="text" cssClass="form-control" id="threadId" path="threadPostedId"
+                            <label for="forumId">Forum ID :</label>
+                            <form:input type="text" cssClass="form-control" id="forumId" path="forumId"
                                         readonly="true"/>
                         </p>
                         <p class="form-group">
-                            <label for="username">Username:</label>
-                            <form:input type="text" cssClass="form-control" id="username" path="username"
-                                        readonly="true"/>
+                            <label for="forumName">Forum name :</label>
+                            <form:input type="text" cssClass="form-control" id="forumName" path="forumName"/>
                         </p>
+                        <p><form:errors path="forumName" cssClass="alert alert-warning"/></p>
                         <p class="form-group">
-                            <label for="username">Time posted:</label>
-                            <form:input type="text" cssClass="form-control" id="username" path="msgTime"
-                                        readonly="true"/>
+                            <label for="description">Description :</label>
+                            <form:textarea type="text" cssClass="form-control" id="description" path="description"/>
                         </p>
-                        <p class="form-group">
-                            <label for="message">Message:</label>
-                            <form:textarea type="text" cssClass="form-control" id="message" path="msg"/>
-                        </p>
-                        <p><form:errors path="msg" cssClass="alert alert-warning"/></p>
+                        <p><form:errors path="description" cssClass="alert alert-warning"/></p>
                         <p>
-                            <button type="submit" class="btn btn-primary btn-lg" name="editPost" value="EditPost"
+                            <button type="submit" class="btn btn-primary btn-lg" name="editForumConfirmed"
+                                    value="EditForumConfirmed"
                                     class="btn btn-default"><spring:message code="label.edit"/></button>
                             <button type="submit" class="btn btn-primary btn-lg" name="cancel" value="Cancel"
                                     class="btn btn-default"><spring:message code="label.cancel"/></button>

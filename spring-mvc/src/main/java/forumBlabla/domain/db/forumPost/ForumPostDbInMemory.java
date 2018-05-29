@@ -1,11 +1,12 @@
 package forumBlabla.domain.db.forumPost;
 
 import forumBlabla.domain.ForumPost;
+import forumBlabla.domain.db.Database;
 import forumBlabla.domain.db.DbException;
 
 import java.util.*;
 
-public class ForumPostDbInMemory implements ForumPostDb
+public class ForumPostDbInMemory implements Database<ForumPost>
 {
 
     Map<Integer, ForumPost> forumPostMap = new LinkedHashMap<>();
@@ -14,10 +15,6 @@ public class ForumPostDbInMemory implements ForumPostDb
     public ForumPostDbInMemory()
     {
         instanceCounter = 0;
-        this.add(new ForumPost("Hallo dit is mijn eerste post!", "Temas"));
-        this.add(new ForumPost("Hallo dit is mijn tweede post!", "Temas"));
-        this.add(new ForumPost("Hallo dit is mijn derde post!", "Temas"));
-        this.add(new ForumPost("Hallo dit is mijn vierde post!", "Temas"));
     }
 
     @Override
@@ -43,15 +40,15 @@ public class ForumPostDbInMemory implements ForumPostDb
     }
 
     @Override
-    public void edit(int postId, String newMessage)
+    public void edit(ForumPost newMessage)
     {
-        if(newMessage == null || newMessage.trim().length() < 10)
+        if(newMessage.getMsg() == null || newMessage.getMsg().trim().length() < 10)
             throw new DbException("Message invalid!");
-        if(!forumPostMap.containsKey(postId))
+        if(!forumPostMap.containsKey(newMessage.getPostId()))
             throw new DbException("Form post does not exist!");
-        String postUsername = forumPostMap.get(postId).getUsername();
-        ForumPost newForumPost = new ForumPost(newMessage, postUsername, postId);
-        forumPostMap.replace(postId, newForumPost);
+        String postUsername = newMessage.getUsername();
+        ForumPost newForumPost = new ForumPost(newMessage.getMsg(), postUsername, newMessage.getThreadPostedId(), newMessage.getPostId());
+        forumPostMap.replace(newMessage.getPostId(), newForumPost);
     }
 
     @Override
@@ -60,13 +57,11 @@ public class ForumPostDbInMemory implements ForumPostDb
         forumPostMap.remove(postId);
     }
 
-    @Override
-    public int getLatestPostId()
+    public int getLatestId()
     {
         return instanceCounter;
     }
 
-    @Override
     public String getType() {
         return "MEMORY";
     }

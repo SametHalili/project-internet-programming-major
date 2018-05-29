@@ -1,10 +1,9 @@
-package forumBlabla.domain.db.forumPost;
-
+package forumBlabla.domain.db.forum;
 
 import forumBlabla.domain.db.Database;
 import forumBlabla.domain.db.DbException;
 
-public class FactoryForumPostDb
+public class FactoryForumDb
 {
     public Database getTypeDb(String dbType)
     {
@@ -13,12 +12,11 @@ public class FactoryForumPostDb
         switch (dbType)
         {
             case "MEMORY":
-                return new ForumPostDbInMemory();
+                return new ForumDbInMemory();
             case "JPA":
-                return new ForumPostDbJpa();
+                return new ForumDbJpa();
             default:
                 throw new DbException("Wrong dbType!");
         }
     }
-
 }

@@ -1,15 +1,17 @@
 package forumBlabla.domain.db.forumPost;
+
 import forumBlabla.domain.ForumPost;
+import forumBlabla.domain.Thread;
+import forumBlabla.domain.db.Database;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.*;
 
-public class ForumPostDbJpa implements ForumPostDb //TODO: jpa implementation
+public class ForumPostDbJpa implements Database<ForumPost>
 {
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
-
 
     @Override
     public ForumPost get(int postId)
@@ -31,7 +33,7 @@ public class ForumPostDbJpa implements ForumPostDb //TODO: jpa implementation
         String query = "SELECT post FROM ForumPost post";
         List<ForumPost> resultList = em.createQuery(query, ForumPost.class).getResultList();
 
-        for (ForumPost post: resultList)
+        for (ForumPost post : resultList)
         {
             forumPostMap.put(post.getPostId(), post);
         }
@@ -43,22 +45,30 @@ public class ForumPostDbJpa implements ForumPostDb //TODO: jpa implementation
     @Override
     public void add(ForumPost forumPost)
     {
-        ForumPost newPost = new ForumPost(forumPost.getMsg(),forumPost.getUsername());
+        ForumPost newPost = new ForumPost(forumPost.getMsg(), forumPost.getUsername(), forumPost.getThreadPostedId());
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        em.persist(newPost);
+
+        Thread thread = em.find(Thread.class, newPost.getThreadPostedId());
+        thread.getForumPostList().add(forumPost);
+
+        em.persist(forumPost);
         em.getTransaction().commit();
         em.close();
     }
 
     @Override
-    public void edit(int postId, String newMessage)
+    public void edit(ForumPost newPost)
     {
         EntityManager em = entityManagerFactory.createEntityManager();
-        ForumPost forumPost = em.find(ForumPost.class, postId);
+        ForumPost forumPost = em.find(ForumPost.class, newPost.getPostId());
 
         em.getTransaction().begin();
-        forumPost.setMsg(newMessage);
+
+        forumPost.setMsg(newPost.getMsg());
+        Thread thread = em.find(Thread.class, newPost.getThreadPostedId());
+        thread.editForumPostList(forumPost);
+
         em.getTransaction().commit();
         em.close();
     }
@@ -70,18 +80,41 @@ public class ForumPostDbJpa implements ForumPostDb //TODO: jpa implementation
         ForumPost forumPost = em.find(ForumPost.class, postId);
 
         em.getTransaction().begin();
+
+        Thread thread = em.find(Thread.class, forumPost.getThreadPostedId());
+        for(int i = 0; i < thread.getForumPostList().size(); i++)
+        {
+            if(thread.getForumPostList().get(i).getPostId() == postId)
+            {
+                thread.getForumPostList().remove(i);
+            }
+        }
         em.remove(forumPost);
         em.getTransaction().commit();
         em.close();
     }
 
-    @Override
-    public int getLatestPostId() {
-        return 0;
-    } //TODO: return last post id
+    public int getLatestId()
+    {
+        int id = 0;
+        EntityManager em = entityManagerFactory.createEntityManager();
+        String query = "SELECT post FROM ForumPost post";
+        List<ForumPost> resultList = em.createQuery(query, ForumPost.class).getResultList();
+        for (ForumPost forumPost: resultList)
+        {
+            int currId = forumPost.getPostId();
+            if(currId > id)
+            {
+                id = currId;
+            }
+        }
+        em.close();
 
-    @Override
-    public String getType() {
+        return id;
+    }
+
+    public String getType()
+    {
         return "JPA";
     }
 }

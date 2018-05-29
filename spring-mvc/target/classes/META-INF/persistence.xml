@@ -6,7 +6,9 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
         <class>forumBlabla.domain.ForumPost</class>
-        <class>forumBlabla.domain.ForumUser</class>
+        <class>forumBlabla.domain.Thread</class>
+        <class>forumBlabla.domain.Forum</class>
+
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:derby://193.191.177.8:10116/forum;create=true"/>

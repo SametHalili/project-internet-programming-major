@@ -8,7 +8,7 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <jsp:include page="head.jsp">
-    <jsp:param name="pageTitle" value="New Post - Blabla Forum"></jsp:param>
+    <jsp:param name="pageTitle" value="Delete thread - Blabla Forum"></jsp:param>
 </jsp:include>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -16,28 +16,29 @@
     <div class="row">
         <div class="card col-sm-6 offset-sm-3">
             <div class="card-body">
-                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum/${newForumPost.threadPostedId}/thread"
-                           modelAttribute="newForumPost">
+                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum"
+                           modelAttribute="toBeDeletedForum">
                     <div>
-                        <h1><msg:message key="label.createPost"/></h1>
-                        <p>
-                            <label for="threadId">Thread ID:</label>
-                            <form:input type="text" cssClass="form-control" id="threadId" path="threadPostedId"
+                        <h1><msg:message key="label.deleteFollowing"/></h1>
+                        <p class="form-group">
+                            <label for="forumPostedId">Forum ID:</label>
+                            <form:input type="text" cssClass="form-control" id="forumPostedId" path="forumId"
                                         readonly="true"/>
                         </p>
                         <p class="form-group">
-                            <label for="username"><spring:message code="label.username"/>:</label>
-                            <form:input type="text" cssClass="form-control" id="username" path="username"/>
+                            <label for="forumName">Forum name:</label>
+                            <form:input type="text" cssClass="form-control" id="forumName" path="forumName"
+                                        readonly="true"/>
                         </p>
-                        <p><form:errors path="username" cssClass="alert alert-warning"/></p>
                         <p class="form-group">
-                            <label for="message"><spring:message code="label.message"/>:</label>
-                            <form:textarea type="text" cssClass="form-control" id="message" path="msg"/>
+                            <label for="forumName">Description:</label>
+                            <form:input type="text" cssClass="form-control" id="forumName" path="description"
+                                        readonly="true"/>
                         </p>
-                        <p><form:errors path="msg" cssClass="alert alert-warning"/></p>
                         <p>
-                            <button type="submit" class="btn btn-primary btn-lg" name="addPost" value="AddPost"
-                                    class="btn btn-default"><spring:message code="label.submit"/></button>
+                            <button type="submit" class="btn btn-primary btn-lg" name="deleteForumConfirmed"
+                                    value="DeleteForumConfirmed" class="btn btn-default"><spring:message
+                                    code="label.delete"/></button>
                             <button type="submit" class="btn btn-primary btn-lg" name="cancel" value="Cancel"
                                     class="btn btn-default"><spring:message code="label.cancel"/></button>
                         </p>
@@ -47,7 +48,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

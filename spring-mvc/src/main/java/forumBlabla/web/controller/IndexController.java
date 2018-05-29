@@ -1,6 +1,8 @@
 package forumBlabla.web.controller;
 
 import forumBlabla.domain.newsapi.Result;
+import forumBlabla.service.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,13 +13,24 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value={"/", "/index"})
 public class IndexController
 {
+    private final Service service;
+
+    public IndexController(@Autowired Service service)
+    {
+        this.service = service;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView getTop3Headlines()
+    public ModelAndView getIndex()
     {
         RestTemplate restTemplate = new RestTemplate();
         Result response = restTemplate.getForObject(
                 "https://newsapi.org/v2/top-headlines?country=be&apiKey=b2f3fc0d68e749918cff86d0a76db876",
                 Result.class);
-        return new ModelAndView("index","headlines", response.getArticles());
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("headlines", response.getArticles());
+        mav.addObject("forums", service.getForums());
+        mav.setViewName("index");
+        return mav;
     }
 }

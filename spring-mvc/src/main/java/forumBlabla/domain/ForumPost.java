@@ -21,13 +21,17 @@ public class ForumPost
     @GeneratedValue
     private int postId;
 
+    @NotNull
+    private int threadPostedId;
+
     @NotNull(message = "{error.no.message}")
-    @Size(min = 8, message = "{invalid.no.message}")
+    @Size(min = 5, message = "{invalid.no.message}")
     private String msg;
 
     @NotNull(message="{error.no.username}")
     @Size(min = 5, message="{invalid.no.username}")
     private String username;
+
     @JsonFormat(pattern = "dd-MM-yyyy KK:mm a")
     private LocalDateTime msgTime;
 
@@ -35,27 +39,30 @@ public class ForumPost
     {
     }
 
-    public ForumPost(String msg, String username) //Default constructor
+    public ForumPost(String msg, String username, int threadId) //Default constructor
     {
         setMsg(msg);
         setUsername(username);
         setMsgTime(LocalDateTime.now());
+        setThreadPostedId(threadId);
         this.postId = 0; //Dummy value, the sql table only needs msg, username and msgTime.
     }                    //The postId will be incremented by itself in the sql table
 
-    public ForumPost(String msg, String username, int postId) //When working in memory
+    public ForumPost(String msg, String username, int threadId, int postId) //When working in memory
     {
         setMsg(msg);
         setUsername(username);
         setMsgTime(LocalDateTime.now());
+        setThreadPostedId(threadId);
         setPostId(postId);
     }
 
-    public ForumPost(String msg, String username, LocalDateTime localDateTime, int postId) //When you need to convert the values you get from the sql table to an object
+    public ForumPost(String msg, String username, LocalDateTime localDateTime, int threadId, int postId) //When you need to convert the values you get from the sql table to an object
     {
         setMsg(msg);
         setUsername(username);
         setMsgTime(localDateTime);
+        setThreadPostedId(threadId);
         setPostId(postId);
     }
 
@@ -112,5 +119,17 @@ public class ForumPost
     public int getPostId()
     {
         return postId;
+    }
+
+    public int getThreadPostedId()
+    {
+        return threadPostedId;
+    }
+
+    public void setThreadPostedId(int threadPostedId)
+    {
+        if(threadPostedId < 0)
+            throw new DomainException("threadId error!");
+        this.threadPostedId = threadPostedId;
     }
 }

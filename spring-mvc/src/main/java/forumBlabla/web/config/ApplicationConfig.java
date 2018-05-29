@@ -1,9 +1,6 @@
 package forumBlabla.web.config;
 
-import forumBlabla.domain.db.user.ForumUserDbInMemory;
-import forumBlabla.domain.db.user.ForumUserDbJpa;
-import forumBlabla.service.ForumPostService;
-import forumBlabla.service.ForumUserService;
+import forumBlabla.service.Service;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,11 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig
 {
     @Bean
-    public ForumPostService service()
+    public Service service()
     {
-        return new ForumPostService("JPA");
+        return new Service("JPA");
     }
-
-    @Bean
-    public ForumUserService userService() { return new ForumUserService(new ForumUserDbJpa()); }
 }

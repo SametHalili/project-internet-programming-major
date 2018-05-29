@@ -8,46 +8,46 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <jsp:include page="head.jsp">
-    <jsp:param name="pageTitle" value="Editing post - Forum"></jsp:param>
+    <jsp:param name="pageTitle" value="Delete thread - Blabla Forum"></jsp:param>
 </jsp:include>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-
 <div class="container">
     <div class="row">
         <div class="card col-sm-6 offset-sm-3">
             <div class="card-body">
-                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum/${editedPost.threadPostedId}/thread"
-                           modelAttribute="editedPost">
+                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum"
+                           modelAttribute="toBeDeletedThread">
                     <div>
-                        <h1><msg:message key="label.editFollowing"/></h1>
+                        <h1><msg:message key="label.deleteFollowing"/></h1>
                         <p class="form-group">
-                            <label for="postId">Post ID:</label>
-                            <form:input type="text" cssClass="form-control" id="postId" path="postId" readonly="true"/>
+                            <label for="forumPostedId">Forum ID:</label>
+                            <form:input type="text" cssClass="form-control" id="forumPostedId" path="forumPostedId"
+                                        readonly="true"/>
                         </p>
                         <p class="form-group">
-                            <label for="postId">Thread ID:</label>
-                            <form:input type="text" cssClass="form-control" id="threadId" path="threadPostedId"
+                            <label for="postId">Thread name:</label>
+                            <form:input type="text" cssClass="form-control" id="postId" path="threadName"
+                                        readonly="true"/>
+                        </p>
+                        <p class="form-group">
+                            <label for="threadId">Thread ID:</label>
+                            <form:input type="text" cssClass="form-control" id="threadId" path="threadId"
                                         readonly="true"/>
                         </p>
                         <p class="form-group">
                             <label for="username">Username:</label>
-                            <form:input type="text" cssClass="form-control" id="username" path="username"
-                                        readonly="true"/>
-                        </p>
-                        <p class="form-group">
-                            <label for="username">Time posted:</label>
-                            <form:input type="text" cssClass="form-control" id="username" path="msgTime"
+                            <form:input type="text" cssClass="form-control" id="username" path="usernameOP"
                                         readonly="true"/>
                         </p>
                         <p class="form-group">
                             <label for="message">Message:</label>
-                            <form:textarea type="text" cssClass="form-control" id="message" path="msg"/>
+                            <form:input type="text" cssClass="form-control" id="message" path="msgOP" readonly="true"/>
                         </p>
-                        <p><form:errors path="msg" cssClass="alert alert-warning"/></p>
                         <p>
-                            <button type="submit" class="btn btn-primary btn-lg" name="editPost" value="EditPost"
-                                    class="btn btn-default"><spring:message code="label.edit"/></button>
+                            <button type="submit" class="btn btn-primary btn-lg" name="deleteThread"
+                                    value="DeleteThread" class="btn btn-default"><spring:message
+                                    code="label.delete"/></button>
                             <button type="submit" class="btn btn-primary btn-lg" name="cancel" value="Cancel"
                                     class="btn btn-default"><spring:message code="label.cancel"/></button>
                         </p>
@@ -57,6 +57,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
