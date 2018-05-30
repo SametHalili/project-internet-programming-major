@@ -42,7 +42,7 @@ public class Service
         setForumDb(forumDb.getTypeDb(dbType));
     }
 
-    public void setForumPostDb(Database strategy)
+    private void setForumPostDb(Database strategy)
     {
         this.forumPostDatabase = strategy;
     }
@@ -76,9 +76,7 @@ public class Service
 
     public boolean getMessageBool(int postId)
     {
-        if (forumPostDatabase.get(postId) != null)
-            return true;
-        return false;
+        return forumPostDatabase.get(postId) != null;
     }
 
     public ForumPost createMessage(String message, String username, int threadId)

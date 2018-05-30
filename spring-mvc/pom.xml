@@ -19,6 +19,7 @@
         <jpa.version>2.7.1</jpa.version>
         <derby.version>10.14.1.0</derby.version>
         <spring-security.version>5.0.4.RELEASE</spring-security.version>
+        <spring-security-taglibs.ver>4.2.1.RELEASE</spring-security-taglibs.ver>
         <springweb>5.0.4.RELEASE</springweb>
         <hibernate>6.0.7.Final</hibernate>
         <validation>2.0.1.Final</validation>
@@ -69,11 +70,19 @@
             <artifactId>spring-security-web</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring-security-taglibs.ver}</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>

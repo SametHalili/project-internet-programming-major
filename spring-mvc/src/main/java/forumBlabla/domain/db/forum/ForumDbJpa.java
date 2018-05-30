@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ForumDbJpa implements Database<Forum>
 {
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
 
     @Override
     public Forum get(int forumId)

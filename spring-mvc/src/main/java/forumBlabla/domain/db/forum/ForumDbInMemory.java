@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class ForumDbInMemory implements Database<Forum>
 {
-    Map<Integer, Forum> forumMap = new LinkedHashMap<>();
+    private final Map<Integer, Forum> forumMap = new LinkedHashMap<>();
     private static int instanceCounter = 0; //ONLY NEEDED WHEN WORKING IN MEMORY
 
     public ForumDbInMemory()

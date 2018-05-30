@@ -9,12 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping(value = "/forum/{forumId}/thread")
 public class ThreadController
@@ -90,7 +86,6 @@ public class ThreadController
         if (result.hasErrors())
             return "editFormPost";
         ForumPost finalPost = new ForumPost(forumPost.getMsg(), forumPost.getUsername(), forumPost.getThreadPostedId(), forumPost.getPostId());
-        System.out.println(finalPost.getPostId());
         service.editMessage(finalPost);
         return "redirect:/forum/" + service.getThread(finalPost.getThreadPostedId()).getForumPostedId()
                 + "/thread/" + finalPost.getThreadPostedId() + ".htm";
@@ -107,6 +102,6 @@ public class ThreadController
     @RequestMapping(params = "cancel", method = RequestMethod.POST)
     public String cancelAction()
     {
-        return "redirect:/";
+        return "redirect:/index";
     }
 }

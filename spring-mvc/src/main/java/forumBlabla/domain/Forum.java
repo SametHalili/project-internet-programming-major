@@ -91,6 +91,7 @@ public class Forum
         this.description = description;
     }
 
+    @SuppressWarnings("unused")
     public LocalDateTime getForumCreated()
     {
         return forumCreated;
@@ -107,6 +108,7 @@ public class Forum
             this.forumCreated = forumCreated;
     }
 
+    @SuppressWarnings("unused")
     @JsonIgnore
     public String getForumCreatedFormatted()
     {
@@ -118,6 +120,7 @@ public class Forum
         return threadList;
     }
 
+    @SuppressWarnings("unused")
     public void setThreadList(List<Thread> threadList)
     {
         this.threadList = threadList;
@@ -128,6 +131,7 @@ public class Forum
         threadList.add(newThread);
     }
 
+    @SuppressWarnings("unused")
     public void deleteThread(Thread threadDel)
     {
         for(int i = 0; i < threadList.size(); i++)

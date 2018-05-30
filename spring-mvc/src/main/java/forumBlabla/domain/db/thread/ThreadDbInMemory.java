@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class ThreadDbInMemory implements Database<Thread>
 {
-    Map<Integer, Thread> threadMap = new LinkedHashMap<>();
+    private final Map<Integer, Thread> threadMap = new LinkedHashMap<>();
     private static int instanceCounter = 0; //ONLY NEEDED WHEN WORKING IN MEMORY
 
     public ThreadDbInMemory()

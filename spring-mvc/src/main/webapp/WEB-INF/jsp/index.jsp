@@ -1,7 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="escape" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="msg" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<escape:htmlEscape defaultHtmlEscape="false" />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -79,7 +82,9 @@
                                 <h5 class="card-header"><msg:message key="label.listOfForums"/></h5>
                             </div>
                             <div class="col-sm-2">
-                                <a class="btn btn-primary" href="/forum/newForum.htm" role="button"><msg:message key="label.createForum"/></a>
+                                <security:authorize access="hasRole('ADMIN')">
+                                    <a class="btn btn-primary" href="/forum/newForum.htm" role="button"><msg:message key="label.createForum"/></a>
+                                </security:authorize>
                             </div>
                         </div>
                     </div>
@@ -96,24 +101,26 @@
                                 <div class="row">
                                     <div class="col-sm-10">
                                         <h5 class="card-title"><a
-                                                href="/forum/${forum.forumId}.htm">${forum.forumName}</a></h5>
-                                        <h6 class="card-subtitle">${forum.description}</h6>
+                                                href="/forum/${forum.forumId}.htm"><c:out value="${forum.forumName}"/></a></h5>
+                                        <h6 class="card-subtitle"><c:out value="${forum.description}"/></h6>
                                     </div>
                                     <div class="col-sm-2">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                            Actions
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item"
-                                               href="/forum/${forum.forumId}/editForum.htm">
-                                                <spring:message key="label.edit"/>
-                                            </a>
-                                            <a class="dropdown-item" href="/forum/${forum.forumId}/deleteForum.htm">
-                                                <spring:message key="label.delete"/>
-                                            </a>
-                                        </div>
+                                        <security:authorize access="hasRole('ADMIN')">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                Actions
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item"
+                                                   href="/forum/${forum.forumId}/editForum.htm">
+                                                    <spring:message key="label.edit"/>
+                                                </a>
+                                                <a class="dropdown-item" href="/forum/${forum.forumId}/deleteForum.htm">
+                                                    <spring:message key="label.delete"/>
+                                                </a>
+                                            </div>
+                                        </security:authorize>
                                     </div>
                                 </div>
                             </div>

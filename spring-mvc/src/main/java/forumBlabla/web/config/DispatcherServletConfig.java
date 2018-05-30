@@ -22,6 +22,7 @@ public class DispatcherServletConfig implements WebMvcConfigurer
     {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("index.htm").setViewName("index");
+        registry.addViewController("/login").setViewName("login");
     }
 
     @Bean
@@ -36,8 +37,7 @@ public class DispatcherServletConfig implements WebMvcConfigurer
 
     @Bean
     public LocaleResolver localeResolver() {
-        CookieLocaleResolver localeResolver = new CookieLocaleResolver();
-        return localeResolver;
+        return new CookieLocaleResolver();
     }
 
     @Override

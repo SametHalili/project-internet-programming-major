@@ -17,7 +17,7 @@
     <div class="row">
         <div class="card col-sm-6 offset-sm-3">
             <div class="card-body">
-                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum.htm"
+                <form:form role="form" method="POST" action="${pageContext.request.contextPath}/forum"
                            modelAttribute="newThread">
                     <div>
                         <h1><msg:message key="label.createThread"/></h1>

@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.validation.Valid;
-import javax.ws.rs.Path;
 
+
+@SuppressWarnings("SameReturnValue")
 @Controller
 @RequestMapping(value = "/forum")
 public class ForumController
@@ -77,7 +77,6 @@ public class ForumController
     @RequestMapping(params = "deleteForumConfirmed", method = RequestMethod.POST)
     public String deleteForum(@Valid @ModelAttribute("toBeDeletedForum") Forum forum, BindingResult newThreadError)
     {
-        System.out.println(forum.getForumId());
         service.deleteForum(forum.getForumId());
         return "redirect:/";
     }
@@ -142,6 +141,6 @@ public class ForumController
     @RequestMapping(params = "cancel", method = RequestMethod.POST)
     public String cancelAction()
     {
-        return "redirect:/";
+        return "redirect:/index";
     }
 }

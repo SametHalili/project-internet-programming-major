@@ -1,8 +1,6 @@
 package forumBlabla.web.controller;
 
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -13,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class ForumExceptionHandler
 {
-    public static final String DEFAULT_ERROR_VIEW = "errorPage";
+    private static final String DEFAULT_ERROR_VIEW = "errorPage";
 
     @ExceptionHandler(value = Exception.class)
     public ModelAndView

@@ -2,6 +2,7 @@ package forumBlabla.domain.newsapi;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@SuppressWarnings({"ALL", "unused"})
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Article
 {

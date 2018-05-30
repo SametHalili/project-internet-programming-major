@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class ForumRESTController
 {
-    private Service service;
+    private final Service service;
 
     public ForumRESTController(@Autowired Service service)
     {

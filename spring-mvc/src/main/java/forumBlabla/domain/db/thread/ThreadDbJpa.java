@@ -1,7 +1,6 @@
 package forumBlabla.domain.db.thread;
 
 import forumBlabla.domain.Forum;
-import forumBlabla.domain.ForumPost;
 import forumBlabla.domain.Thread;
 import forumBlabla.domain.db.Database;
 import forumBlabla.domain.db.DbException;
@@ -15,7 +14,7 @@ import java.util.Map;
 
 public class ThreadDbJpa implements Database<Thread>
 {
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
 
 
     @Override

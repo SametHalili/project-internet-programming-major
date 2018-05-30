@@ -11,7 +11,7 @@ import java.util.*;
 
 public class ForumPostDbJpa implements Database<ForumPost>
 {
-    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("forum");
 
     @Override
     public ForumPost get(int postId)

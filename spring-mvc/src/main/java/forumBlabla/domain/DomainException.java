@@ -1,6 +1,6 @@
 package forumBlabla.domain;
 
-public class DomainException extends RuntimeException
+class DomainException extends RuntimeException
 {
     public DomainException()
     {
