@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>javaSpringMvcForum-mvc</artifactId>
+    <groupId>org.ucll</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <parent>
+        <artifactId>javaSpringMvcForum</artifactId>
+        <groupId>org.ucll</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <spring.version>5.0.4.RELEASE</spring.version>
+        <spring-security.version>5.0.4.RELEASE</spring-security.version>
+        <javaSpringMvcForum>1.0-SNAPSHOT</javaSpringMvcForum>
+        <spring-security-taglibs.ver>5.0.4.RELEASE</spring-security-taglibs.ver>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <artifactId>javaSpringMvcForum-domain</artifactId>
+            <groupId>org.ucll</groupId>
+            <version>${javaSpringMvcForum}</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>javaSpringMvcForum-restapi</artifactId>
+            <groupId>org.ucll</groupId>
+            <version>${javaSpringMvcForum}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring-security-taglibs.ver}</version>
+        </dependency>
+    </dependencies>
+</project>
