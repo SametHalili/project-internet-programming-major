@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/javaSpringMvcForum.iml" filepath="$PROJECT_DIR$/javaSpringMvcForum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaSpringMvcForum-domain/javaSpringMvcForum-domain.iml" filepath="$PROJECT_DIR$/javaSpringMvcForum-domain/javaSpringMvcForum-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaSpringMvcForum-mvc/javaSpringMvcForum-mvc.iml" filepath="$PROJECT_DIR$/javaSpringMvcForum-mvc/javaSpringMvcForum-mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaSpringMvcForum-restapi/javaSpringMvcForum-restapi.iml" filepath="$PROJECT_DIR$/javaSpringMvcForum-restapi/javaSpringMvcForum-restapi.iml" />
+    </modules>
+  </component>
+</project>

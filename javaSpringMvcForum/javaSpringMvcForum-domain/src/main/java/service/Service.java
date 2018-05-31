@@ -209,7 +209,6 @@ public class Service
     public Forum getForum(int forumId)
     {
         Forum forum = forumDatabase.get(forumId);
-        System.out.println(forum.getForumId() + " - " + forum.getForumName() + " - " + forum.getDescription());
         return forum;
     }
 

@@ -1,0 +1,9 @@
+web\config\ApplicationConfig.class
+web\config\security\WebSecurityConfig.class
+web\controller\ForumController.class
+web\controller\ForumExceptionHandler.class
+web\controller\IndexController.class
+web\config\WebInitializer.class
+web\controller\ThreadController.class
+web\config\DispatcherServletConfig.class
+web\config\security\SecurityWebApplicationInitializer.class
