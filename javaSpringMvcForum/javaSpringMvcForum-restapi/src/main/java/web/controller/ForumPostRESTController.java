@@ -40,27 +40,30 @@ public class ForumPostRESTController
 
     @RequestMapping(path="/api/forumposts/post", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createForumPost(@RequestBody ForumPost forumPost)
+    public String createForumPost(@RequestBody ForumPost forumPost)
     {
         service.addNewMessage(forumPost.getMsg(), forumPost.getUsername(), forumPost.getThreadPostedId());
+        return "Success";
     }
 
     //Edit a forum post with PUT request
 
     @RequestMapping(value = "/api/forumposts/{id}", method = RequestMethod.PUT)
-    public void editForumPost(@PathVariable("id") int id, @RequestBody String message)
+    public String editForumPost(@PathVariable("id") int id, @RequestBody String message)
     {
         ForumPost currentForumPost = service.getMessage(id);
         currentForumPost.setMsg(message);
 
         service.editMessage(currentForumPost);
+        return "Success";
     }
 
     // Delete a forum post with DELETE request
 
     @RequestMapping(value = "/api/forumposts/{id}", method = RequestMethod.DELETE)
-    public void deleteForumPost(@PathVariable("id") int id)
+    public String deleteForumPost(@PathVariable("id") int id)
     {
         service.deleteMessage(service.getForumPostDatabase().get(id));
+        return "Success";
     }
 }
