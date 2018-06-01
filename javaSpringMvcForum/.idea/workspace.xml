@@ -186,7 +186,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="62" />
     <option name="y" value="-21" />
     <option name="width" value="1080" />
@@ -673,20 +673,20 @@
       <option name="presentableId" value="Default" />
       <updated>1527783595916</updated>
       <workItem from="1527783598781" duration="13894000" />
-      <workItem from="1527865045176" duration="5068000" />
+      <workItem from="1527865045176" duration="5345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18962000" />
+    <option name="totallyTimeSpent" value="19239000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32897604" />
-      <window_info anchor="right" id="Maven Projects" order="3" visible="true" weight="0.15778251" />
+      <window_info active="true" anchor="right" id="Maven Projects" order="3" visible="true" weight="0.15778251" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="CDI" order="3" />
       <window_info id="Capture Tool" order="2" />
@@ -707,7 +707,7 @@
       <window_info anchor="bottom" x="129" y="219" width="1470" height="590" id="Run" order="2" type="WINDOWED" weight="0.32897604" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
