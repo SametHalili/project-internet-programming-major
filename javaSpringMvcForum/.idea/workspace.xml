@@ -191,7 +191,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="62" />
     <option name="y" value="-21" />
     <option name="width" value="1080" />
@@ -1038,7 +1038,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: com.fasterxml.jackson.core:jackson-annotations:2.3.0</last-edited>
+          <last-edited />
           <splitter-proportions>
             <option name="proportions">
               <list>
