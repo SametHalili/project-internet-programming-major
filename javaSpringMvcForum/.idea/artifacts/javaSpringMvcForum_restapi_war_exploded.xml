@@ -38,7 +38,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/javaSpringMvcForum-restapi/target/javaSpringMvcForum/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/javaSpringMvcForum-restapi/target/javaSpringMvcForum-restapi/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="javaSpringMvcForum-restapi/web/Web" />
     </root>

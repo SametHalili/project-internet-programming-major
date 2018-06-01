@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="javaSpringMvcForum-mvc:war">
-    <output-path>$PROJECT_DIR$/javaSpringMvcForum-mvc/target</output-path>
-    <root id="archive" name="javaSpringMvcForum.war">
+    <output-path />
+    <root id="archive" name="javaSpringMvcForum-mvc.war">
       <element id="artifact" artifact-name="javaSpringMvcForum-mvc:war exploded" />
     </root>
   </artifact>
