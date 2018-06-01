@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="javaSpringMvcForum-mvc:war exploded">
-    <output-path>$PROJECT_DIR$/javaSpringMvcForum-mvc/target/javaSpringMvcForum</output-path>
+    <output-path />
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -9,9 +9,6 @@
         <element id="directory" name="lib">
           <element id="archive" name="javaSpringMvcForum-domain-1.0-SNAPSHOT.jar">
             <element id="module-output" name="javaSpringMvcForum-domain" />
-          </element>
-          <element id="archive" name="javaSpringMvcForum-restapi-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="javaSpringMvcForum-restapi" />
           </element>
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.0.4.RELEASE" />

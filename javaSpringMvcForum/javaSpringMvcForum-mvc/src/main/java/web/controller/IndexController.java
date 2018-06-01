@@ -1,6 +1,6 @@
 package web.controller;
 
-import newsapi.Result;
+import domain.newsapi.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,7 +32,7 @@ public class IndexController
     {
         RestTemplate restTemplate = new RestTemplate();
         Result response = restTemplate.getForObject(
-                "https://newsapi.org/v2/top-headlines?country=be&apiKey=b2f3fc0d68e749918cff86d0a76db876",
+                "https://domain.newsapi.org/v2/top-headlines?country=be&apiKey=b2f3fc0d68e749918cff86d0a76db876",
                 Result.class);
         ModelAndView mav = new ModelAndView();
         mav.addObject("headlines", response.getArticles());

@@ -1,9 +1,6 @@
-newsapi\Result.class
 web\config\WebInitializer.class
 web\controller\ForumRESTController.class
-newsapi\Source.class
 web\config\WebConfig.class
 web\controller\ForumPostRESTController.class
 web\controller\RestResponseEntityExceptionHandler.class
-newsapi\Article.class
 web\controller\ThreadRESTController.class

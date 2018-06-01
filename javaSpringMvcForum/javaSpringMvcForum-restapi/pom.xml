@@ -7,7 +7,7 @@
     <artifactId>javaSpringMvcForum-restapi</artifactId>
     <groupId>org.ucll</groupId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <parent>
         <artifactId>javaSpringMvcForum</artifactId>
@@ -26,5 +26,7 @@
             <version>${javaSpringMvcForum}</version>
         </dependency>
     </dependencies>
+
+
 
 </project>
