@@ -1,13 +1,9 @@
 package domain;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -18,6 +14,9 @@ import java.util.List;
 @Entity
 public class Forum
 {
+    @Transient
+    private final static String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
     @Id
     @GeneratedValue
     private int forumId;
@@ -30,8 +29,8 @@ public class Forum
     @Size(min = 10, message="{invalid.no.username}")
     private String description;
 
-    @JsonFormat(pattern = "dd-MM-yyyy KK:mm a")
-    private LocalDateTime forumCreated;
+    @NotNull
+    private String forumCreated;
 
     @JsonIgnore
     @OneToMany
@@ -92,7 +91,7 @@ public class Forum
     }
 
     @SuppressWarnings("unused")
-    public LocalDateTime getForumCreated()
+    public String getForumCreated()
     {
         return forumCreated;
     }
@@ -103,16 +102,9 @@ public class Forum
             throw new DomainException("Something went wrong when giving the localtime!");
 
         if(forumCreated == null)
-            this.forumCreated = LocalDateTime.now();
+            this.forumCreated = LocalDateTime.now().format(DateTimeFormatter.ofPattern(TIME_FORMAT));
         else
-            this.forumCreated = forumCreated;
-    }
-
-    @SuppressWarnings("unused")
-    @JsonIgnore
-    public String getForumCreatedFormatted()
-    {
-        return forumCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            this.forumCreated = forumCreated.format(DateTimeFormatter.ofPattern(TIME_FORMAT));
     }
 
     public List<Thread> getThreadList()

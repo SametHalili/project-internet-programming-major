@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -15,6 +16,9 @@ import java.time.format.DateTimeFormatter;
 @Entity
 public class ForumPost
 {
+    @Transient
+    private final static String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
     @Id
     @GeneratedValue
     private int postId;
@@ -30,8 +34,8 @@ public class ForumPost
     @Size(min = 5, message="{invalid.no.username}")
     private String username;
 
-    @JsonFormat(pattern = "dd-MM-yyyy KK:mm a")
-    private LocalDateTime msgTime;
+    @NotNull
+    private String msgTime;
 
     public ForumPost()
     {
@@ -80,9 +84,9 @@ public class ForumPost
             throw new DomainException("Something went wrong when giving the localtime!");
 
         if(msgTime == null)
-            this.msgTime = LocalDateTime.now();
+            this.msgTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern(TIME_FORMAT));
         else
-            this.msgTime = msgTime;
+            this.msgTime = msgTime.format(DateTimeFormatter.ofPattern(TIME_FORMAT));
 
     }
 
@@ -103,15 +107,9 @@ public class ForumPost
         return username;
     }
 
-    public LocalDateTime getMsgTime()
+    public String getMsgTime()
     {
         return msgTime;
-    }
-
-    @JsonIgnore
-    public String getMsgTimeFormatted()
-    {
-        return msgTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public int getPostId()
