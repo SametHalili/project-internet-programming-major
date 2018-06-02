@@ -20,7 +20,7 @@
                 <a class="btn btn-primary" href="<c:url value="/login.htm"/>"><spring:message key="label.login"/></a>
             </security:authorize>
             <security:authorize access="hasRole('ADMIN')">
-                <a class="btn btn-primary" href="<c:url value="/login.htm"/>"><spring:message key="label.logout"/></a>
+                <a class="btn btn-primary" href="<c:url value="/logout.htm"/>"><spring:message key="label.logout"/></a>
             </security:authorize>
         </div>
     </div>
