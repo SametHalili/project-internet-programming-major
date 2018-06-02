@@ -17,7 +17,7 @@
         <div class="row">
             <div class="card col-sm-6 offset-sm-3">
                 <div class="card-body">
-                    <form name='f' action="${pageContext.request.contextPath}/login.htm" method='POST'>
+                    <form name='f' action="<c:url value="/login.htm"/>" method='POST'>
                         <table>
                             <h1>Admin login</h1>
                             <c:if test="${param.error != null}">
@@ -43,7 +43,7 @@
                             </tr>
                         </table>
                     </form>
-                    <a class="btn btn-primary" href="/index.htm">Go back to home page</a>
+                    <a class="btn btn-primary" href="<c:url value="/index.htm"/>">Go back to home page</a>
                 </div>
             </div>
         </div>

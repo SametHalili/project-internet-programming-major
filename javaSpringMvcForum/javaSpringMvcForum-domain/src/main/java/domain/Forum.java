@@ -21,12 +21,12 @@ public class Forum
     @GeneratedValue
     private int forumId;
 
-    @NotNull(message="{error.no.username}")
-    @Size(min = 3, message="{invalid.no.username}")
+    @NotNull(message="{error.no.forumName}")
+    @Size(min = 3, message="{invalid.no.forumName}")
     private String forumName;
 
-    @NotNull(message="{error.no.username}")
-    @Size(min = 10, message="{invalid.no.username}")
+    @NotNull(message="{error.no.forumDescr}")
+    @Size(min = 10, message="{invalid.no.forumDescr}")
     private String description;
 
     @NotNull
