@@ -21,7 +21,6 @@ public class ForumDbJpa implements Database<Forum>
         EntityManager em = entityManagerFactory.createEntityManager();
 
         Forum forum = em.find(Forum.class, forumId);
-        System.out.println(forum.getForumId());
         if(forum.getForumName().isEmpty())
         {
             throw new DbException("Thread does not exist");

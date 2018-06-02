@@ -1,9 +1,9 @@
 package domain;
 
 import domain.db.DbException;
+import domain.service.Service;
 import org.junit.Before;
 import org.junit.Test;
-import domain.service.Service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

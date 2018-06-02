@@ -55,6 +55,6 @@ public class IndexController
             new SecurityContextLogoutHandler().logout(request, response, auth);
         else
             return "redirect:/";
-        return "redirect:/login?logout";
+        return "redirect:/login.htm?logout";
     }
 }

@@ -1,7 +1,6 @@
 package domain.db.forum;
 
 import domain.Forum;
-import domain.Thread;
 import domain.db.Database;
 import domain.db.DbException;
 

@@ -1,8 +1,8 @@
 package web.config;
 
+import domain.service.Service;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import domain.service.Service;
 
 @Configuration
 public class ApplicationConfig

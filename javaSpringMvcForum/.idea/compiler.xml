@@ -11,8 +11,5 @@
         <module name="javaSpringMvcForum-restapi" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="javaSpringMvcForumr-estapi" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

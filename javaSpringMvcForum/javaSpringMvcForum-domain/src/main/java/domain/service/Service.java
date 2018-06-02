@@ -1,8 +1,8 @@
 package domain.service;
 
 import domain.Forum;
-import domain.Thread;
 import domain.ForumPost;
+import domain.Thread;
 import domain.db.Database;
 import domain.db.forum.FactoryForumDb;
 import domain.db.forum.ForumDbInMemory;
