@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-sm-2">
                                 <security:authorize access="hasRole('ADMIN')">
-                                    <a class="btn btn-primary" href="/forum/newForum.htm" role="button"><msg:message key="label.createForum"/></a>
+                                    <a class="btn btn-primary" href="<c:url value="/forum/newForum.htm"/>" role="button"><msg:message key="label.createForum"/></a>
                                 </security:authorize>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                                 <div class="row">
                                     <div class="col-sm-10">
                                         <h5 class="card-title"><a
-                                                href="/forum/${forum.forumId}.htm"><c:out value="${forum.forumName}"/></a></h5>
+                                                href="<c:url value="/forum/${forum.forumId}.htm"/>"><c:out value="${forum.forumName}"/></a></h5>
                                         <h6 class="card-subtitle"><c:out value="${forum.description}"/></h6>
                                     </div>
                                     <div class="col-sm-2">
@@ -113,10 +113,10 @@
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item"
-                                                   href="/forum/${forum.forumId}/editForum.htm">
+                                                   href="<c:url value="/forum/${forum.forumId}/editForum.htm"/>">
                                                     <spring:message key="label.edit"/>
                                                 </a>
-                                                <a class="dropdown-item" href="/forum/${forum.forumId}/deleteForum.htm">
+                                                <a class="dropdown-item" href="<c:url value="/forum/${forum.forumId}/deleteForum.htm"/>">
                                                     <spring:message key="label.delete"/>
                                                 </a>
                                             </div>

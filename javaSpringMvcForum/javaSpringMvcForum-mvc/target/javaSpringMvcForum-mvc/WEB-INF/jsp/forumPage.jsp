@@ -18,7 +18,7 @@
         <div class="col-sm-8">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/index.htm">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<c:url value="/index.htm"/>">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><c:out value="${currForum.forumName}"/></li>
                 </ol>
             </nav>
@@ -60,7 +60,7 @@
                                     <tbody>
                                     <tr>
                                         <th scope="row">${thread.threadId}</th>
-                                        <td><a href="/forum/${currForum.forumId}/thread/${thread.threadId}.htm"><c:out
+                                        <td><a href="<c:url value="/forum/${currForum.forumId}/thread/${thread.threadId}.htm"/>"><c:out
                                                 value="${thread.threadName}"></c:out></a></td>
                                         <td><c:out value="${thread.usernameOP}"/></td>
                                         <td>${thread.forumPostList.size()}</td>

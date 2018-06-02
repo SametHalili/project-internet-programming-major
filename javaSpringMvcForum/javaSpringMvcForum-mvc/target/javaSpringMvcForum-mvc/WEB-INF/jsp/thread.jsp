@@ -20,8 +20,8 @@
         <div class="col-sm-8">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/index.htm">Home</a></li>
-                    <li class="breadcrumb-item"><a href="/forum/${currForum.forumId}.htm"><c:out value="${currForum.forumName}"/></a>
+                    <li class="breadcrumb-item"><a href="<c:url value="/index.htm"/>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<c:url value="/forum/${currForum.forumId}.htm"><c:out value="${currForum.forumName}"/>"/></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page"><c:out value="${currThread.threadName}"/></li>
                 </ol>
@@ -39,7 +39,7 @@
                         <dd class="col-sm-10">${currThread.threadId}</dd>
 
                         <dt class="col-sm-2">Time posted:</dt>
-                        <dd class="col-sm-10">${currThread.threadCreatedFormatted}</dd>
+                        <dd class="col-sm-10">${currThread.threadCreated}</dd>
                     </dl>
                 </div>
                 <div class="card-body">
@@ -64,7 +64,7 @@
                                     <dd class="col-sm-10">${post.postId}</dd>
 
                                     <dt class="col-sm-2">Time posted:</dt>
-                                    <dd class="col-sm-10">${post.msgTimeFormatted}</dd>
+                                    <dd class="col-sm-10">${post.msgTime}</dd>
                                 </dl>
                             </div>
                             <div class="card-body">

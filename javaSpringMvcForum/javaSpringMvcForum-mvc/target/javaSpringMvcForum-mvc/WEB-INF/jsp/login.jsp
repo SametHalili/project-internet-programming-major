@@ -17,7 +17,7 @@
         <div class="row">
             <div class="card col-sm-6 offset-sm-3">
                 <div class="card-body">
-                    <form name='f' action="/login.htm" method='POST'>
+                    <form name='f' action="${pageContext.request.contextPath}/login.htm" method='POST'>
                         <table>
                             <h1>Admin login</h1>
                             <c:if test="${param.error != null}">

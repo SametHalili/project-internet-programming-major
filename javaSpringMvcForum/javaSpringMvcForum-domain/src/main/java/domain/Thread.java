@@ -3,10 +3,7 @@ package domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -17,6 +14,9 @@ import java.util.List;
 @Entity
 public class Thread
 {
+    @Transient
+    private final static String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
     @Id
     @GeneratedValue
     private int threadId;
@@ -36,8 +36,8 @@ public class Thread
     @Size(min = 5, message="{invalid.no.username}")
     private String usernameOP;
 
-    @JsonFormat(pattern = "dd-MM-yyyy KK:mm a")
-    private LocalDateTime threadCreated;
+    @NotNull
+    private String threadCreated;
 
     @JsonIgnore
     @OneToMany
@@ -126,7 +126,7 @@ public class Thread
         this.usernameOP = usernameOP;
     }
 
-    public LocalDateTime getThreadCreated()
+    public String getThreadCreated()
     {
         return threadCreated;
     }
@@ -137,15 +137,9 @@ public class Thread
             throw new DomainException("Something went wrong when giving the localtime!");
 
         if(threadCreated == null)
-            this.threadCreated = LocalDateTime.now();
+            this.threadCreated = LocalDateTime.now().format(DateTimeFormatter.ofPattern(TIME_FORMAT));
         else
-            this.threadCreated = threadCreated;
-    }
-
-    @JsonIgnore
-    public String getThreadCreatedFormatted()
-    {
-        return threadCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            this.threadCreated = threadCreated.format(DateTimeFormatter.ofPattern(TIME_FORMAT));
     }
 
     public void deleteForumPostList(ForumPost forumPost) // bad name, actually just deletes one forumpost from list
