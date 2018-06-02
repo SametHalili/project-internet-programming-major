@@ -29,7 +29,6 @@ public class Forum
     @Size(min = 10, message="{invalid.no.forumDescr}")
     private String description;
 
-    @NotNull
     private String forumCreated;
 
     @JsonIgnore

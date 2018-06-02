@@ -35,8 +35,7 @@ public class Thread
     @NotNull(message="{error.no.username}")
     @Size(min = 5, message="{invalid.no.username}")
     private String usernameOP;
-
-    @NotNull
+    
     private String threadCreated;
 
     @JsonIgnore

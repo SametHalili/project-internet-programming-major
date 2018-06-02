@@ -34,7 +34,6 @@ public class ForumPost
     @Size(min = 5, message="{invalid.no.username}")
     private String username;
 
-    @NotNull
     private String msgTime;
 
     public ForumPost()
