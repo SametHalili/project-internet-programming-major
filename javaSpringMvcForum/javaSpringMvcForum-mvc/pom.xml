@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>javaSpringMvcForum-mvc</artifactId>
+    <groupId>org.ucll</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <parent>
+        <artifactId>javaSpringMvcForum</artifactId>
+        <groupId>org.ucll</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <spring.version>5.0.4.RELEASE</spring.version>
+        <spring-security.version>5.0.4.RELEASE</spring-security.version>
+        <javaSpringMvcForum>1.0-SNAPSHOT</javaSpringMvcForum>
+        <spring-security-taglibs.ver>5.0.4.RELEASE</spring-security-taglibs.ver>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <artifactId>javaSpringMvcForum-domain</artifactId>
+            <groupId>org.ucll</groupId>
+            <version>${javaSpringMvcForum}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring-security-taglibs.ver}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>javaSpringMvcForum-mvc</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven.war.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.glassfish.maven.plugin</groupId>
+                <artifactId>maven-glassfish-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <glassfishDirectory>${payara.home}/glassfish</glassfishDirectory>
+                    <user>admin</user>
+                    <passwordFile>${payara.home}/glassfish/config/password.txt</passwordFile>
+                    <debug>true</debug>
+                    <terse>false</terse>
+                    <echo>true</echo>
+                    <domain>
+                        <name>domain1</name>
+                        <adminPort>4848</adminPort>
+                        <httpPort>8080</httpPort>
+                    </domain>
+                    <components>
+                        <component>
+                            <name>${project.artifactId}</name>
+                            <artifact>target/${project.build.finalName}.war</artifact>
+                        </component>
+                    </components>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
