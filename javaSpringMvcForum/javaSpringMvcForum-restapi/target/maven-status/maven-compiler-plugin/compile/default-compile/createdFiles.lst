@@ -1,6 +1,0 @@
-web\config\WebInitializer.class
-web\controller\ForumRESTController.class
-web\config\WebConfig.class
-web\controller\ForumPostRESTController.class
-web\controller\RestResponseEntityExceptionHandler.class
-web\controller\ThreadRESTController.class
