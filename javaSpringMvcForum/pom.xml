@@ -14,8 +14,6 @@
         <module>javaSpringMvcForum-domain</module>
         <module>javaSpringMvcForum-mvc</module>
         <module>javaSpringMvcForum-restapi</module>
-        <module>javaSpringMvcForum-mvc</module>
-        <module>javaSpringMvcForum-restapi</module>
     </modules>
 
     <properties>
