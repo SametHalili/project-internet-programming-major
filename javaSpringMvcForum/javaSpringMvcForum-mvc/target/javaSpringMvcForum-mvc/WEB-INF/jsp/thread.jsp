@@ -21,7 +21,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<c:url value="/index.htm"/>">Home</a></li>
-                    <li class="breadcrumb-item"><a href="<c:url value="/forum/${currForum.forumId}.htm"><c:out value="${currForum.forumName}"/>"/></a>
+                    <li class="breadcrumb-item"><a href="<c:url value="/forum/${currForum.forumId}.htm"/>"><c:out value="${currForum.forumName}"></c:out></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page"><c:out value="${currThread.threadName}"/></li>
                 </ol>
