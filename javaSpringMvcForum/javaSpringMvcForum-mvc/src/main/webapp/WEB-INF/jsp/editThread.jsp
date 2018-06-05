@@ -44,9 +44,9 @@
                             <form:input type="text" cssClass="form-control" id="message" path="msgOP"/>
                         </p>
                         <p>
-                            <button type="submit" class="btn btn-primary btn-lg" name="deleteThread"
-                                    value="DeleteThread" class="btn btn-default"><spring:message
-                                    code="label.delete"/></button>
+                            <button type="submit" class="btn btn-primary btn-lg" name="editThread"
+                                    value="EditThread" class="btn btn-default"><spring:message
+                                    code="label.edit"/></button>
                             <button type="submit" class="btn btn-primary btn-lg" name="cancel" value="Cancel"
                                     class="btn btn-default"><spring:message code="label.cancel"/></button>
                         </p>

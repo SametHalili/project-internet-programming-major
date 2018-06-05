@@ -26,18 +26,13 @@
                             <form:input type="text" cssClass="form-control" id="postId" path="postId" readonly="true"/>
                         </p>
                         <p class="form-group">
-                            <label for="postId">Thread ID:</label>
+                            <label for="threadId">Thread ID:</label>
                             <form:input type="text" cssClass="form-control" id="threadId" path="threadPostedId"
                                         readonly="true"/>
                         </p>
                         <p class="form-group">
                             <label for="username">Username:</label>
                             <form:input type="text" cssClass="form-control" id="username" path="username"
-                                        readonly="true"/>
-                        </p>
-                        <p class="form-group">
-                            <label for="username">Time posted:</label>
-                            <form:input type="text" cssClass="form-control" id="username" path="msgTime"
                                         readonly="true"/>
                         </p>
                         <p class="form-group">

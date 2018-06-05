@@ -175,7 +175,7 @@ public class Service
     public void editThread(Thread newThread)
     {
         threadDatabase.edit(newThread);
-        forumDatabase.get(newThread.getThreadId()).editThread(newThread);
+        forumDatabase.get(newThread.getForumPostedId()).editThread(newThread);
     }
 
     public List<ForumPost> getPostsInThreadList(int threadId)
