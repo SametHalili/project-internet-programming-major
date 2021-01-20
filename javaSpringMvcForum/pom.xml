@@ -30,7 +30,7 @@
         <jstl.version>1.2</jstl.version>
         <javaee.version>7.0</javaee.version>
         <glassfish>3.0.1-b09</glassfish>
-        <jackson>2.9.4</jackson>
+        <jackson>2.12.1</jackson>
         <jackson-datatype>2.7.5</jackson-datatype>
     </properties>
 
